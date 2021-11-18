@@ -6,9 +6,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="10dp"
+        android:gravity="center"
         tools:context=".home">
 
-
+<ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <LinearLayout
             android:layout_width="match_parent"
@@ -18,51 +21,244 @@
     >
         <include
                 android:id="@+id/toolbar"
-                layout="@layout/toolbar"></include>
+                layout="@layout/toolbar"
+        ></include>
+
+        <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/car"
+                android:layout_gravity="center"
+                ></ImageView>
+
+<LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:background="@color/maroon"
+        android:layout_marginTop="10dp"
+
+>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Next Service"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+    ></TextView>
+
+    <LinearLayout android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:orientation="horizontal"
+                  android:background="@color/maroon"
+    >
+
         <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Next Service"
+                  android:layout_height="wrap_content"
+                android:text="Date:"
+                android:textColor="@color/white"
         ></TextView>
-        <LinearLayout
+
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:inputType="date"
+                  android:hint="dd/mm/yyy"
+                  android:layout_marginLeft="5dp"
+                  android:textColor="@color/white"
+
+        ></TextView>
+    </LinearLayout>
+
+</LinearLayout>
+
+
+
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_height="250dp"
+                android:layout_gravity="center"
+                android:orientation="horizontal"
+                android:background="#FAEBD7"
+            android:layout_marginTop="30dp">
+
+            <LinearLayout android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:orientation="vertical"
+                          android:id="@+id/ms"
+                          android:paddingLeft="10dp"
+                          tools:ignore="MissingConstraints">
+                <ImageView
+                        android:layout_width="80dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/carservice"
+                        android:id="@+id/myService"
+                        tools:ignore="MissingConstraints"
+                        tools:layout_editor_absoluteY="16dp"
+                        android:layout_gravity="center"
+
+                        tools:layout_editor_absoluteX="16dp"></ImageView>
 
 
+                <TextView
+                         android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="My Car Service"
+                        tools:layout_editor_absoluteX="16dp"></TextView>
 
-            <androidx.cardview.widget.CardView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-            >
+
+            </LinearLayout>
+
+
+            <LinearLayout android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:orientation="vertical"
+                          android:id="@+id/cw"
+                          android:layout_marginLeft="60dp"
+                          app:layout_constraintLeft_toRightOf="@+id/ms"
+                          tools:ignore="MissingConstraints">
 
                 <ImageView
-                        android:layout_width="181dp"
-                        android:layout_height="168dp"
-                        android:src="@drawable/car"></ImageView>
+                        android:layout_width="80dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/carwash"
+                        android:id="@+id/carwash"
+                        tools:ignore="MissingConstraints"
+                        tools:layout_editor_absoluteY="16dp"
+                ></ImageView>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Car Wash"
+                        app:layout_constraintLeft_toRightOf="@+id/ms"
+                        app:layout_constraintTop_toBottomOf="@+id/carwash"
+                        tools:ignore="MissingConstraints"
+                        android:layout_marginTop="8dp"></TextView>
 
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+            </LinearLayout>
 
-
-            </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView
+            <LinearLayout
+                    android:id="@+id/ft"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-            >
+                          android:layout_height="wrap_content"
+                          android:orientation="vertical"
+                          android:layout_marginLeft="60dp"
+                          app:layout_constraintLeft_toRightOf="@+id/cw"
+                          tools:ignore="MissingConstraints">
 
                 <ImageView
-                        android:layout_width="181dp"
-                        android:layout_height="168dp"
-                        android:src="@drawable/car"></ImageView>
+                        android:layout_width="80dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/flattyre"
+                        android:id="@+id/flatTyre"
+                        android:foregroundGravity="center"
+                        ></ImageView>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Flat Tyre"
+                        android:layout_marginTop="5dp"
+                        android:layout_gravity="center"
+                        ></TextView>
+
+            </LinearLayout>
 
 
-            </androidx.cardview.widget.CardView>
-        </LinearLayout>
+            <LinearLayout
+                    android:id="@+id/ec"
+                    android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:orientation="vertical"
+                          android:layout_marginLeft="60dp"
+                          android:layout_marginTop="20dp"
+                          app:layout_constraintTop_toBottomOf="@+id/ms"
+                          tools:ignore="MissingConstraints">
 
+                <ImageView
+                        android:layout_width="80dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/quote"
+                        android:id="@+id/quote"
+                        android:paddingLeft="10dp"
+                        android:layout_gravity="center"
+                ></ImageView>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Estimate cost"
+                        android:layout_marginTop="5dp"
+                        android:layout_gravity="center"
+                ></TextView>
 
+            </LinearLayout>
+
+            <LinearLayout
+                    android:id="@+id/f"
+                    android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:orientation="vertical"
+                          android:layout_marginTop="20dp"
+                          app:layout_constraintLeft_toRightOf="@+id/ec"
+                          app:layout_constraintTop_toBottomOf="@+id/cw"
+                          tools:ignore="MissingConstraints"
+                          android:layout_marginLeft="60dp">
+
+                <ImageView
+                        android:layout_width="80dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/fuel"
+                        android:id="@+id/fuel"
+                        android:paddingLeft="10dp"
+                        android:layout_gravity="center"
+                ></ImageView>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Estimate cost"
+                        android:layout_marginTop="5dp"
+                        android:layout_gravity="center"
+                ></TextView>
+
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:orientation="vertical"
+                          android:layout_marginTop="20dp"
+                          app:layout_constraintLeft_toRightOf="@+id/f"
+                          app:layout_constraintTop_toBottomOf="@+id/ft"
+                          tools:ignore="MissingConstraints"
+                          android:layout_marginLeft="60dp">
+
+                <ImageView
+                        android:layout_width="80dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/mycar"
+                        android:id="@+id/myCar"
+                        android:paddingLeft="10dp"
+                        android:layout_gravity="center"
+                ></ImageView>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Estimate cost"
+                        android:layout_marginTop="5dp"
+                        android:layout_gravity="center"
+                ></TextView>
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 
     </LinearLayout>
+</ScrollView>
+
+
 
 </RelativeLayout>

@@ -3,7 +3,7 @@
     <style name="Theme.CarService" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">#402430</item>
-        <item name="colorPrimaryVariant">#402430</item>
+        <item name="colorPrimaryVariant">@color/maroon</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
