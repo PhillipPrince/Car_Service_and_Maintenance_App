@@ -62,8 +62,18 @@ public class home extends AppCompatActivity implements NavigationView.OnNavigati
         }
         else if(item.getItemId()==R.id.Addcar){
             setContentView(R.layout.addcar);
-        }else if(item.getItemId()==R.id.myService)
+        }else if(item.getItemId()==R.id.myService){
             setContentView(R.layout.myservice);
+        }else if (item.getItemId()==R.id.mechanic){
+            setContentView(R.layout.mechanic);
+        }else if (item.getItemId()==R.id.carExpenses){
+            setContentView(R.layout.carexpenses);
+        }else if (item.getItemId()==R.id.notification){
+            setContentView(R.layout.notifications);
+        }else  if (item.getItemId()==R.id.profile){
+            setContentView(R.layout.profile);
+        }
+
 
         return true;
     }

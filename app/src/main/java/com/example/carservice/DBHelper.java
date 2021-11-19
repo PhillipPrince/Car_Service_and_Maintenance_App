@@ -63,6 +63,13 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
+    public void deleteUser(String username,  String password){
+        SQLiteDatabase db=this.getWritableDatabase();
+        String sql="delete * from users where username=?, password=?";
+       db.execSQL(sql);
+
+    }
+
     public  Boolean checkUserNamePassword(String username, String password){
         SQLiteDatabase db=this.getWritableDatabase();
         String sql="select * from users where username=?, password=?";
