@@ -13,7 +13,8 @@ public class newUser extends AppCompatActivity {
     EditText username, email, password, repassword;
     TextView login;
     Button signUp;
-    DBHelper db;
+    //DBHelper db;
+    DataBaseHelper db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,7 +25,7 @@ public class newUser extends AppCompatActivity {
         repassword=findViewById(R.id.rePass);
         signUp=findViewById(R.id.create);
         login=findViewById(R.id.loginstead);
-        db=new DBHelper(this);
+        db=new DataBaseHelper(this);
     }
 
     public void logInstead(View view) {
@@ -43,7 +44,16 @@ public class newUser extends AppCompatActivity {
         }else{
             if(pass.equals(repass)){
                 Intent intent=new Intent(getApplicationContext(), home.class);
-                startActivity(intent);
+                //startActivity(intent);
+                Boolean ins=db.insertData(name, mail,pass);
+
+                if(ins==true){
+                    Toast.makeText(getApplicationContext(), "Registration successful", Toast.LENGTH_SHORT).show();
+                    // Intent intent=new Intent(getApplicationContext(), home.class);
+                     startActivity(intent);
+                }else{
+                    Toast.makeText(getApplicationContext(), "Registration Failed. Try again", Toast.LENGTH_SHORT).show();
+                }
               /*Boolean checkUser=db.checkUser(name);
               if(checkUser==false){
                   Boolean checkMail=db.checkMail(mail);

@@ -29,19 +29,86 @@
     <ImageView
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:background="@android:drawable/ic_menu_save"
+        android:background="@drawable/save"
         android:layout_marginRight="20dp"
         ></ImageView>
 
     <ImageView
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:background="@android:drawable/ic_menu_close_clear_cancel"
+        android:background="@drawable/cancelicon"
         ></ImageView>
 
 
 
 </LinearLayout>
+    <ImageView android:layout_width="match_parent"
+               android:layout_height="100dp"
+               android:background="@drawable/dashboad"
+    ></ImageView>
+
+
+
+        <EditText
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:hint="Car Model"
+            android:layout_marginTop="10dp"
+            ></EditText>
+
+        <EditText
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:hint="Fuel"
+            android:layout_marginTop="10dp"
+            ></EditText>
+
+        <EditText
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:hint="Model Year"
+            android:layout_marginTop="10dp"
+            ></EditText>
+
+        <EditText
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:hint="Engine"
+            android:layout_marginTop="10dp"
+            ></EditText>
+
+        <EditText
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:hint="Chasis Number"
+            android:layout_marginTop="10dp"
+            ></EditText>
+
+        <EditText
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:hint="Engine Number"
+            android:layout_marginTop="10dp"
+            ></EditText>
+
+        <EditText
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:hint="Number Plate"
+            android:layout_marginTop="10dp"
+            ></EditText>
+
+        <EditText
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:hint="Last Insurance"
+            android:layout_marginTop="10dp"
+            ></EditText>
+
+
+
+
+
 
 
 </LinearLayout>
