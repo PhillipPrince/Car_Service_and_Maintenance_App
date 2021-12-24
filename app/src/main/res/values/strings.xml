@@ -2,4 +2,9 @@
     <string name="app_name">Car Service</string>
     <string name="Open_navigation">Open Navigation</string>
     <string name="close_navigation">Close Navigation</string>
+    <string name="title_activity_myservice">myservice</string>
+    <string name="select_car">Select car</string>
+    <string name="service_operation">Service Operation</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
 </resources>

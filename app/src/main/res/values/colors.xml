@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="maroon">#402430</color>
     <color name="lightmaroon">#D8CCD1</color>
+    <color name="concrete">#F2F2F2</color>
 </resources>

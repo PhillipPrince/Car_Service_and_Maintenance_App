@@ -1,17 +1,16 @@
 package com.example.carservice;
 
 import android.content.Intent;
-import android.graphics.drawable.GradientDrawable;
-import android.view.Menu;
-import android.view.MenuInflater;
+import android.os.Bundle;
 import android.view.MenuItem;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+
 import com.google.android.material.navigation.NavigationView;
 
 public class home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -23,7 +22,7 @@ public class home extends AppCompatActivity implements NavigationView.OnNavigati
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_homee);
 
         navigationView=findViewById(R.id.navigatio);
         drawerLayout=findViewById(R.id.drawer);
@@ -38,6 +37,7 @@ public class home extends AppCompatActivity implements NavigationView.OnNavigati
         toggle.syncState();
 
         navigationView.setNavigationItemSelectedListener(this);
+
     }
 
     @Override
@@ -62,19 +62,20 @@ public class home extends AppCompatActivity implements NavigationView.OnNavigati
         }
         else if(item.getItemId()==R.id.Addcar){
             setContentView(R.layout.addcar);
-        }else if(item.getItemId()==R.id.myService){
-            setContentView(R.layout.myservice);
+        }else if(item.getItemId()==R.id.service){
+             intent =new Intent(getApplicationContext(), myservice.class);
+            startActivity(intent);
         }else if (item.getItemId()==R.id.mechanic){
             setContentView(R.layout.mechanic);
         }else if (item.getItemId()==R.id.carExpenses){
             setContentView(R.layout.carexpenses);
         }else if (item.getItemId()==R.id.notification){
-            setContentView(R.layout.notifications);
+
         }else  if (item.getItemId()==R.id.profile){
             setContentView(R.layout.profile);
         }
-
-
         return true;
     }
+
+
 }

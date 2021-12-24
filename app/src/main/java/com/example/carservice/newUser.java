@@ -25,7 +25,14 @@ public class newUser extends AppCompatActivity {
         repassword=findViewById(R.id.rePass);
         signUp=findViewById(R.id.create);
         login=findViewById(R.id.loginstead);
-        db=new DataBaseHelper(this);
+        db=new DataBaseHelper(getApplicationContext());
+
+        signUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                create();
+            }
+        });
     }
 
     public void logInstead(View view) {
@@ -33,7 +40,7 @@ public class newUser extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void create(View view) {
+    public void create() {
         String name=username.getText().toString();
         String mail=email.getText().toString();
         String pass=password.getText().toString();
@@ -54,7 +61,7 @@ public class newUser extends AppCompatActivity {
                 }else{
                     Toast.makeText(getApplicationContext(), "Registration Failed. Try again", Toast.LENGTH_SHORT).show();
                 }
-              /*Boolean checkUser=db.checkUser(name);
+              Boolean checkUser=db.checkUser(name);
               if(checkUser==false){
                   Boolean checkMail=db.checkMail(mail);
                   if(checkMail==false){
@@ -62,7 +69,7 @@ public class newUser extends AppCompatActivity {
                       if(insert==true){
                           Toast.makeText(getApplicationContext(), "Registration successful", Toast.LENGTH_SHORT).show();
                          // Intent intent=new Intent(getApplicationContext(), home.class);
-                         // startActivity(intent);
+                         startActivity(intent);
                       }else{
                           Toast.makeText(getApplicationContext(), "Registration Failed. Try again", Toast.LENGTH_SHORT).show();
                       }
@@ -74,7 +81,7 @@ public class newUser extends AppCompatActivity {
               }
 
                // Intent intent=new Intent(getApplicationContext(), home.class);
-                startActivity(intent);*/
+                startActivity(intent);
             }else{
                 Toast.makeText(getApplicationContext(), "Password did not Match", Toast.LENGTH_SHORT).show();
             }

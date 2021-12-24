@@ -5,13 +5,14 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteAccessPermException;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
 public class DataBaseHelper  extends SQLiteOpenHelper {
     public static String DBName="CarUsers.db";
-    public static int DBVersion=1;
+    public static int DBVersion=5;
     public static String tableName="user";
     public DataBaseHelper(@Nullable Context context) {
         super(context, DBName, null, DBVersion);
@@ -19,6 +20,7 @@ public class DataBaseHelper  extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        this.getWritableDatabase();
         String sql="create table tableName(username TEXT primary key, email TEXT, password TEXT)";
         db.execSQL(sql);
 
@@ -31,7 +33,7 @@ public class DataBaseHelper  extends SQLiteOpenHelper {
 
     public Boolean insertData(String username, String email, String password){
         SQLiteDatabase db=this.getWritableDatabase();
-        onCreate(db);
+
         ContentValues cv=new ContentValues();
         cv.put( "username", username);
         cv.put("email",email);

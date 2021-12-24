@@ -26,7 +26,8 @@
 
     <item android:title="Profile">
         <menu>
-            <group android:checkableBehavior="single">
+            <group
+                    android:checkableBehavior="single">
 
 
             <item
