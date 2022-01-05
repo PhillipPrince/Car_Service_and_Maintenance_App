@@ -21,6 +21,8 @@ public class FragmentAdapter extends FragmentStateAdapter {
                 return new SelectCar();
             case 1:
                 return new operation();
+            case 2:
+                return new full_service();
 
         }
         return null;
@@ -28,6 +30,6 @@ public class FragmentAdapter extends FragmentStateAdapter {
 
     @Override
     public int getItemCount() {
-        return 2;
+        return 3;
     }
 }

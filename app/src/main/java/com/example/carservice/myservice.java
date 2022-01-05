@@ -40,6 +40,7 @@ public class myservice extends AppCompatActivity {
 
             tabLayout.addTab(tabLayout.newTab().setText("Select Car"));
             tabLayout.addTab(tabLayout.newTab().setText("Operations"));
+        tabLayout.addTab(tabLayout.newTab().setText("Full Service"));
             tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
                 @Override
                 public void onTabSelected(TabLayout.Tab tab) {

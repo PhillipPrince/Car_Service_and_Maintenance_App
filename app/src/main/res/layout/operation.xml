@@ -1,16 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        >
+        android:layout_height="match_parent">
 
-        
-    </LinearLayout>
+
+            <ImageView
+                android:id="@+id/fluidIcon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/fluids"
+                tools:ignore="MissingConstraints"></ImageView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:text="Fluid Maintenance"
+                android:textColor="@color/maroon"
+                app:layout_constraintLeft_toRightOf="@+id/fluidIcon"
+                tools:ignore="MissingConstraints"></TextView>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Change oil"
+                tools:ignore="MissingConstraints"
+                ></EditText>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Ch"
+                tools:ignore="MissingConstraints"
+                ></EditText>
+
+    </ScrollView>
+
 </RelativeLayout>

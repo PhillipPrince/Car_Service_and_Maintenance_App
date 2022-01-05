@@ -27,7 +27,7 @@ Button button;
     }
 
     public void action(){
-       textView.setText("Select my Car");
+
     }
 
 

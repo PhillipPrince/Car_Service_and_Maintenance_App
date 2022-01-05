@@ -6,9 +6,11 @@
         <entry key="..\:/Users/Philip/IdeaProjects/CarService/app/src/main/res/drawable/shapes.xml" value="0.12604166666666666" />
         <entry key="..\:/Users/Philip/IdeaProjects/CarService/app/src/main/res/drawable/user.xml" value="0.12604166666666666" />
         <entry key="..\:/Users/Philip/IdeaProjects/CarService/app/src/main/res/layout/activity_main.xml" value="0.10989583333333333" />
+        <entry key="..\:/Users/Philip/IdeaProjects/CarService/app/src/main/res/layout/activity_mecanich.xml" value="0.22447916666666667" />
         <entry key="..\:/Users/Philip/IdeaProjects/CarService/app/src/main/res/layout/activity_myservice.xml" value="0.10989583333333333" />
         <entry key="..\:/Users/Philip/IdeaProjects/CarService/app/src/main/res/layout/activity_myservice2.xml" value="0.22447916666666667" />
         <entry key="..\:/Users/Philip/IdeaProjects/CarService/app/src/main/res/layout/activity_service.xml" value="0.22447916666666667" />
+        <entry key="..\:/Users/Philip/IdeaProjects/CarService/app/src/main/res/layout/carexpenses.xml" value="0.22447916666666667" />
         <entry key="..\:/Users/Philip/IdeaProjects/CarService/app/src/main/res/layout/fragment_myservice.xml" value="0.22447916666666667" />
         <entry key="..\:/Users/Philip/IdeaProjects/CarService/app/src/main/res/layout/operation.xml" value="0.22447916666666667" />
         <entry key="..\:/Users/Philip/IdeaProjects/CarService/app/src/main/res/layout/select_car.xml" value="0.10989583333333333" />
@@ -19,7 +21,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

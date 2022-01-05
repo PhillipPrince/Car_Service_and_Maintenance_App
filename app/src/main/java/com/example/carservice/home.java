@@ -66,11 +66,11 @@ public class home extends AppCompatActivity implements NavigationView.OnNavigati
              intent =new Intent(getApplicationContext(), myservice.class);
             startActivity(intent);
         }else if (item.getItemId()==R.id.mechanic){
-            setContentView(R.layout.mechanic);
+            intent=new Intent(getApplicationContext(), mechanic.class);
+            startActivity(intent);
         }else if (item.getItemId()==R.id.carExpenses){
             setContentView(R.layout.carexpenses);
         }else if (item.getItemId()==R.id.notification){
-
         }else  if (item.getItemId()==R.id.profile){
             setContentView(R.layout.profile);
         }

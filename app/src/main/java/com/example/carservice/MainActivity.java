@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
     Button login;
     TextView signUp;
     LinearLayout linearLayout;
-    DBHelper db;
+    DataBaseHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         login=findViewById(R.id.login);
         signUp=findViewById(R.id.signUp);
         linearLayout=findViewById(R.id.log);
-        db=new DBHelper(getApplicationContext());
+        db=new DataBaseHelper(getApplicationContext());
 
 
 
@@ -44,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent=new Intent(getApplicationContext(), home.class);
         startActivity(intent);
+
+        
 
 
 
