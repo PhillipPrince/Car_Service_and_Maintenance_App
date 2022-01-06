@@ -3,6 +3,8 @@ package com.example.carservice;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.EditText;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -61,7 +63,7 @@ public class home extends AppCompatActivity implements NavigationView.OnNavigati
             startActivity(intent);
         }
         else if(item.getItemId()==R.id.Addcar){
-            setContentView(R.layout.addcar);
+            addCar();
         }else if(item.getItemId()==R.id.service){
              intent =new Intent(getApplicationContext(), myservice.class);
             startActivity(intent);
@@ -70,11 +72,29 @@ public class home extends AppCompatActivity implements NavigationView.OnNavigati
             startActivity(intent);
         }else if (item.getItemId()==R.id.carExpenses){
             setContentView(R.layout.carexpenses);
+
         }else if (item.getItemId()==R.id.notification){
         }else  if (item.getItemId()==R.id.profile){
             setContentView(R.layout.profile);
         }
         return true;
+    }
+    public void addCar(){
+        setContentView(R.layout.addcar);
+        EditText carModel, fuel, modelYear, engine, chasisNo,engineNumber, numberPlate, lastInsurance;
+        ImageView saveCar, cancel;
+         carModel=findViewById(R.id.model);
+         fuel=findViewById(R.id.fuelType);
+         modelYear=findViewById(R.id.modelYear);
+         engine=findViewById(R.id.engine);
+        chasisNo=findViewById(R.id.chasisNo);
+        engineNumber=findViewById(R.id.engineNumber);
+        numberPlate=findViewById(R.id.numberPlate);
+        lastInsurance=findViewById(R.id.lastInsurance);
+        saveCar=findViewById(R.id.saveCar);
+        cancel=findViewById(R.id.cancel);
+
+
     }
 
 

@@ -43,8 +43,10 @@ public class MainActivity extends AppCompatActivity {
         String name=userName.getText().toString();
         String pass=password.getText().toString();
 
+        Intent intent=new Intent(getApplicationContext(), home.class);
+        startActivity(intent);
 
-        if(name.equals("")||pass.equals("")){
+        /*if(name.equals("")||pass.equals("")){
             String err="Enter all Credentials";
             error.setText(err);
 
@@ -67,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
             }else{
                 error.setText("Details do not match");
             }
-        }
+        }*/
 
 
 
