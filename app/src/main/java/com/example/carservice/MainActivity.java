@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity {
     EditText userName, password;
     Button login;
-    TextView signUp;
+    TextView signUp, error;
     LinearLayout linearLayout;
     DataBaseHelper db;
 
@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         signUp=findViewById(R.id.signUp);
         linearLayout=findViewById(R.id.log);
         db=new DataBaseHelper(getApplicationContext());
+        error=findViewById(R.id.error);
 
 
 
@@ -42,10 +43,31 @@ public class MainActivity extends AppCompatActivity {
         String name=userName.getText().toString();
         String pass=password.getText().toString();
 
-        Intent intent=new Intent(getApplicationContext(), home.class);
-        startActivity(intent);
 
-        
+        if(name.equals("")||pass.equals("")){
+            String err="Enter all Credentials";
+            error.setText(err);
+
+        }else{
+            Boolean checkName=db.checkUser(name);
+
+            if(checkName=false){
+                Boolean checkMail=db.checkMail(name);
+                if(checkMail=true){
+                    Boolean checkPass=db.checkPassword(pass);
+                    if(checkPass=true){
+                        Intent intent=new Intent(getApplicationContext(), home.class);
+                        startActivity(intent);
+                    }else{
+                        error.setText("Wrong password");
+                    }
+                }else{
+                    error.setText("Wrong Email");
+                }
+            }else{
+                error.setText("Details do not match");
+            }
+        }
 
 
 

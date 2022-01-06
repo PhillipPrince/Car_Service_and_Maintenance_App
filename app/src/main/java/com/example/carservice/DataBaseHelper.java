@@ -5,8 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.database.sqlite.SQLiteAccessPermException;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -61,6 +59,15 @@ public class DataBaseHelper  extends SQLiteOpenHelper {
         Cursor cursor=db.rawQuery("select * from users where email=?",  new String[]{email});
         if(cursor.getCount()>0){
             return  true;
+        }else {
+            return false;
+        }
+    }
+    public Boolean checkPassword(String pass){
+        SQLiteDatabase db=this.getWritableDatabase();
+        Cursor cursor=db.rawQuery("select *from users where password=?", new String[]{pass});
+        if(cursor.getCount()>0){
+            return true;
         }else {
             return false;
         }

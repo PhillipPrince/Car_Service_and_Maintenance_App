@@ -24,6 +24,13 @@
                app:srcCompat="@drawable/car"
                android:layout_gravity="center"
                android:id="@+id/imageView"/>
+       <TextView
+           android:id="@+id/error"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:shadowColor="#EA0505"
+           android:layout_gravity="center"
+           />
 
        <EditText
            android:id="@+id/userName"
