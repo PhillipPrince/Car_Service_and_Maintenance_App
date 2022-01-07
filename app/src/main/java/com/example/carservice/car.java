@@ -4,9 +4,11 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -21,18 +24,28 @@ public class car extends AppCompatActivity implements  DatePickerDialog.OnDateSe
     EditText carModel, fuel, modelYear, engine, chasisNo,engineNumber, numberPlate, lastInsurance;
 
     FloatingActionButton floatingActionButton;
+    ListView carList;
+    DataBaseHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_car);
         floatingActionButton=findViewById(R.id.fab);
+        carList=findViewById(R.id.carList);
+        db=new DataBaseHelper(getApplicationContext());
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                addCar();
             }
         });
+
+
+        ArrayList<String> cars = new ArrayList<>();
+
+        ArrayAdapter adapter=new ArrayAdapter(getApplicationContext(),android.R.layout.simple_list_item_1, cars);
+        carList.setAdapter(adapter);
 
 
     }

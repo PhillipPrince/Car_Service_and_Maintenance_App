@@ -218,14 +218,14 @@
                             android:layout_width="88dp"
                             android:layout_height="71dp"
                             android:src="@drawable/quote"
-                            android:id="@+id/quote"
+                            android:id="@+id/expenses"
                             android:paddingLeft="10dp"
                             android:layout_gravity="center"
                     ></ImageView>
                     <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Estimate cost"
+                            android:text="Car Expenses"
                             android:layout_marginTop="5dp"
                             android:layout_gravity="center"
                     ></TextView>
@@ -283,8 +283,9 @@
                             android:layout_height="wrap_content"
                             android:text="My Cars"
                             android:layout_marginTop="5dp"
-                            android:layout_gravity="center"
-                    ></TextView>
+                            android:layout_gravity="center"/>
+
+
 
                 </LinearLayout>
 

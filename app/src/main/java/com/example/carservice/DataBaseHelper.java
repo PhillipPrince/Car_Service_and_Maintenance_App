@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
+
 public class DataBaseHelper  extends SQLiteOpenHelper {
     public static String DBName="CarUsers.db";
     public static int DBVersion=6;
@@ -97,9 +99,10 @@ public class DataBaseHelper  extends SQLiteOpenHelper {
         }
         return false;
     }
-     /*public List<String> myCars(){
-        List<String> cars= new List<String>();
+     public ArrayList<String> myCars(){
+        ArrayList<String> cars= new ArrayList<>();
 
-     }*/
+        return cars;
+     }
 
 }

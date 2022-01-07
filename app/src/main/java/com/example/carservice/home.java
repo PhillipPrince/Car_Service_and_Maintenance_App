@@ -21,7 +21,7 @@ public class home extends AppCompatActivity implements NavigationView.OnNavigati
     NavigationView navigationView;
     Toolbar toolbar;
     DataBaseHelper db;
-    ImageView myCars;
+    ImageView myCars, carService, carWash, expenses, fuel;
 
 
     @Override
@@ -33,10 +33,16 @@ public class home extends AppCompatActivity implements NavigationView.OnNavigati
         drawerLayout=findViewById(R.id.drawer);
         toolbar=findViewById(R.id.toolbar);
         myCars=findViewById(R.id.myCar);
+        fuel=findViewById(R.id.fuel);
+        expenses=findViewById(R.id.expenses);
+        carWash=findViewById(R.id.carwash);
+        carService=findViewById(R.id.myService);
+
         db=new DataBaseHelper(getApplicationContext());
 
 
         setSupportActionBar(toolbar);
+
 
         navigationView.bringToFront();
         ActionBarDrawerToggle toggle=new ActionBarDrawerToggle(this, drawerLayout, toolbar,R.string.Open_navigation, R.string.close_navigation);
@@ -50,6 +56,12 @@ public class home extends AppCompatActivity implements NavigationView.OnNavigati
             public void onClick(View v) {
                 Intent intent=new Intent(getApplicationContext(), car.class);
                 startActivity(intent);
+            }
+        });
+        carService.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myService();
             }
         });
 
@@ -88,6 +100,10 @@ public class home extends AppCompatActivity implements NavigationView.OnNavigati
             setContentView(R.layout.profile);
         }
         return true;
+    }
+    public void myService(){
+Intent intent=new Intent(getApplicationContext(), service.class);
+startActivity(intent);
     }
 
 }
