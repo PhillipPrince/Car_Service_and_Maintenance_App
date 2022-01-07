@@ -3,7 +3,7 @@ package com.example.carservice;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.EditText;
+import android.view.View;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
@@ -20,6 +20,9 @@ public class home extends AppCompatActivity implements NavigationView.OnNavigati
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
+    DataBaseHelper db;
+    ImageView myCars;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +32,8 @@ public class home extends AppCompatActivity implements NavigationView.OnNavigati
         navigationView=findViewById(R.id.navigatio);
         drawerLayout=findViewById(R.id.drawer);
         toolbar=findViewById(R.id.toolbar);
+        myCars=findViewById(R.id.myCar);
+        db=new DataBaseHelper(getApplicationContext());
 
 
         setSupportActionBar(toolbar);
@@ -39,6 +44,14 @@ public class home extends AppCompatActivity implements NavigationView.OnNavigati
         toggle.syncState();
 
         navigationView.setNavigationItemSelectedListener(this);
+
+        myCars.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getApplicationContext(), car.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
@@ -61,10 +74,7 @@ public class home extends AppCompatActivity implements NavigationView.OnNavigati
         if(item.getItemId()==R.id.home){
             intent=new Intent(getApplicationContext(), home.class);
             startActivity(intent);
-        }
-        else if(item.getItemId()==R.id.Addcar){
-            addCar();
-        }else if(item.getItemId()==R.id.service){
+        } else if(item.getItemId()==R.id.service){
              intent =new Intent(getApplicationContext(), myservice.class);
             startActivity(intent);
         }else if (item.getItemId()==R.id.mechanic){
@@ -79,23 +89,5 @@ public class home extends AppCompatActivity implements NavigationView.OnNavigati
         }
         return true;
     }
-    public void addCar(){
-        setContentView(R.layout.addcar);
-        EditText carModel, fuel, modelYear, engine, chasisNo,engineNumber, numberPlate, lastInsurance;
-        ImageView saveCar, cancel;
-         carModel=findViewById(R.id.model);
-         fuel=findViewById(R.id.fuelType);
-         modelYear=findViewById(R.id.modelYear);
-         engine=findViewById(R.id.engine);
-        chasisNo=findViewById(R.id.chasisNo);
-        engineNumber=findViewById(R.id.engineNumber);
-        numberPlate=findViewById(R.id.numberPlate);
-        lastInsurance=findViewById(R.id.lastInsurance);
-        saveCar=findViewById(R.id.saveCar);
-        cancel=findViewById(R.id.cancel);
-
-
-    }
-
 
 }

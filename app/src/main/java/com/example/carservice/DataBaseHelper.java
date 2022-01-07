@@ -8,8 +8,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
-import java.util.Date;
-
 public class DataBaseHelper  extends SQLiteOpenHelper {
     public static String DBName="CarUsers.db";
     public static int DBVersion=6;
@@ -81,7 +79,7 @@ public class DataBaseHelper  extends SQLiteOpenHelper {
         }
     }
     public Boolean saveCar( String carModel , String fuel, int modelYear  ,
-            String engine  , String chasisNo , String engineNumber  , String numberPlate ,  Date lastInsurance ){
+            String engine  , String chasisNo , String engineNumber  , String numberPlate ,  String lastInsurance ){
         SQLiteDatabase db=this.getWritableDatabase();
         ContentValues contentValues=new ContentValues();
         contentValues.put("carModel", carModel);
@@ -99,4 +97,9 @@ public class DataBaseHelper  extends SQLiteOpenHelper {
         }
         return false;
     }
+     /*public List<String> myCars(){
+        List<String> cars= new List<String>();
+
+     }*/
+
 }

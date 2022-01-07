@@ -10,6 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CarService">
         <activity
+            android:name=".car"
+            android:exported="false"
+            android:label="@string/title_activity_car"
+            android:theme="@style/Theme.CarService.NoActionBar" />
+        <activity
             android:name=".mechanic"
             android:exported="false" />
         <activity
@@ -17,7 +22,6 @@
             android:exported="false"
             android:label="@string/title_activity_myservice"
             android:theme="@style/Theme.CarService.NoActionBar" />
-        <activity android:name=".car" />
         <activity android:name=".home" />
         <activity android:name=".newUser" />
         <activity android:name=".MainActivity">

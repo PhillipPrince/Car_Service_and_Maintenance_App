@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:padding="10dp"
+    android:padding="5dp"
     android:layout_height="match_parent">
 
 <LinearLayout
@@ -30,7 +30,7 @@
         android:id="@+id/saveCar"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:background="@android:drawable/ic_menu_save"
+        android:background="@drawable/save"
         android:layout_marginRight="20dp"
         ></ImageView>
 
@@ -38,7 +38,7 @@
         android:id="@+id/cancel"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:background="@android:drawable/ic_menu_close_clear_cancel"
+        android:background="@drawable/cancelicon"
         ></ImageView>
 
 
@@ -113,13 +113,7 @@
             android:layout_height="wrap_content"
             android:hint="Last Insurance"
             android:layout_marginTop="10dp"
+            android:drawableEnd="@android:drawable/ic_menu_my_calendar"
 
-            ></EditText>
-
-
-
-
-
-
-
-</LinearLayout>
+            android:drawableRight="@android:drawable/ic_menu_my_calendar"></EditText>
+    </LinearLayout>
