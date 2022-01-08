@@ -15,6 +15,7 @@ public class DataBaseHelper  extends SQLiteOpenHelper {
     public static int DBVersion=6;
     public static String tableName="user";
     public static String tableCar="tableCar";
+    SQLiteDatabase sQLiteDatabase=this.getReadableDatabase();
     public DataBaseHelper(@Nullable Context context) {
         super(context, DBName, null, DBVersion);
     }
@@ -22,7 +23,7 @@ public class DataBaseHelper  extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         this.getWritableDatabase();
-        db.execSQL("DROP TABLE IF EXISTS "+tableName);
+
         String sql="create table tableName(username TEXT primary key, email TEXT, password TEXT)";
 
         db.execSQL(sql);
@@ -33,7 +34,9 @@ public class DataBaseHelper  extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+        db=this.getWritableDatabase();
+        db.execSQL("DROP TABLE IF EXISTS "+tableName);
+        db.execSQL("DROP TABLE IF EXISTS "+ tableCar);
 
     }
 
@@ -53,7 +56,7 @@ public class DataBaseHelper  extends SQLiteOpenHelper {
     }
     public Boolean checkUser(String username){
         SQLiteDatabase db=this.getWritableDatabase();
-        Cursor cursor=db.rawQuery("select * from users where username=?",  new String[]{username});
+        Cursor cursor=db.rawQuery("select * from tableName where username=?",  new String[]{username});
         if(cursor.getCount()>0){
             return  true;
         }else {
@@ -64,7 +67,7 @@ public class DataBaseHelper  extends SQLiteOpenHelper {
     public Boolean checkMail(String email){
         SQLiteDatabase db=this.getWritableDatabase();
         String sql="select * from users where username=?";
-        Cursor cursor=db.rawQuery("select * from users where email=?",  new String[]{email});
+        Cursor cursor=db.rawQuery("select * from tableName where email=?",  new String[]{email});
         if(cursor.getCount()>0){
             return  true;
         }else {
@@ -73,12 +76,28 @@ public class DataBaseHelper  extends SQLiteOpenHelper {
     }
     public Boolean checkPassword(String pass){
         SQLiteDatabase db=this.getWritableDatabase();
-        Cursor cursor=db.rawQuery("select *from users where password=?", new String[]{pass});
+        Cursor cursor=db.rawQuery("select *from tableName where password=?", new String[]{pass});
         if(cursor.getCount()>0){
             return true;
         }else {
             return false;
         }
+    }
+    public Cursor syncDetails() {
+        SQLiteDatabase db=this.getReadableDatabase();
+        Cursor cursor=null;
+        try {
+            String sql= ("SELECT * FROM tableName where logged=1");
+            cursor= db.rawQuery(sql, null);
+            if (cursor.getCount()>0) {
+                cursor.moveToFirst();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        cursor.close();
+        db.close();
+        return cursor;
     }
     public Boolean saveCar( String carModel , String fuel, int modelYear  ,
             String engine  , String chasisNo , String engineNumber  , String numberPlate ,  String lastInsurance ){

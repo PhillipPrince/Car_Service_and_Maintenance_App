@@ -1,6 +1,7 @@
 package com.example.carservice;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -30,6 +31,12 @@ public class MainActivity extends AppCompatActivity {
         error=findViewById(R.id.error);
 
 
+        String sql= ("SELECT * FROM tableName where logged=1");
+        Cursor cursor=db.sQLiteDatabase.rawQuery(sql, null);
+        cursor.getCount();
+
+
+
 
 
     }
@@ -43,17 +50,16 @@ public class MainActivity extends AppCompatActivity {
         String name=userName.getText().toString();
         String pass=password.getText().toString();
 
-        Intent intent=new Intent(getApplicationContext(), home.class);
-        startActivity(intent);
 
-        /*if(name.equals("")||pass.equals("")){
+
+        if(name.equals("")||pass.equals("")){
             String err="Enter all Credentials";
             error.setText(err);
 
         }else{
             Boolean checkName=db.checkUser(name);
 
-            if(checkName=false){
+            if(checkName=true){
                 Boolean checkMail=db.checkMail(name);
                 if(checkMail=true){
                     Boolean checkPass=db.checkPassword(pass);
@@ -69,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
             }else{
                 error.setText("Details do not match");
             }
-        }*/
+        }
 
 
 
