@@ -1,7 +1,6 @@
 package com.example.carservice;
 
 import android.app.DatePickerDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -43,6 +42,7 @@ public class car extends AppCompatActivity implements  DatePickerDialog.OnDateSe
 
 
         ArrayList<String> cars = new ArrayList<>();
+        cars.add(String.valueOf(DataBaseHelper.myCars()));
 
         ArrayAdapter adapter=new ArrayAdapter(getApplicationContext(),android.R.layout.simple_list_item_1, cars);
         carList.setAdapter(adapter);
@@ -66,14 +66,14 @@ public class car extends AppCompatActivity implements  DatePickerDialog.OnDateSe
         cancel=findViewById(R.id.cancel);
 
 
-       /* String cm=carModel.getText().toString();
+        String cm=carModel.getText().toString();
         String f=fuel.getText().toString();
-        int my= Integer.parseInt(modelYear.getText().toString());
+        String my= modelYear.getText().toString();
         String eng=engine.getText().toString();
         String chas=chasisNo.getText().toString();
         String engNo=engineNumber.getText().toString();
         String nplate=numberPlate.getText().toString();
-        String ins=lastInsurance.getText().toString();*/
+        String ins=lastInsurance.getText().toString();
 
         lastInsurance.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,13 +86,19 @@ public class car extends AppCompatActivity implements  DatePickerDialog.OnDateSe
         saveCar.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
-                 startActivity(new Intent(getApplicationContext(), car.class));
-                /* Boolean insCar=db.saveCar(cm, f, my,eng, chas, engNo, nplate, ins);
-                 if(insCar=true){
-                     Toast.makeText(getApplicationContext(), "Saved", Toast.LENGTH_SHORT).show();
-                 }  else {
-                     Toast.makeText(getApplicationContext(), "Failed. Try again", Toast.LENGTH_SHORT).show();
-                 }*/
+                 //startActivity(new Intent(getApplicationContext(), car.class));
+                 Boolean insCar=db.saveCar(cm, f, Integer.parseInt(my),eng, chas, engNo, nplate, ins);
+                 try {
+
+                     if(insCar=true){
+                         Toast.makeText(getApplicationContext(), "Saved", Toast.LENGTH_SHORT).show();
+                     }  else {
+                         Toast.makeText(getApplicationContext(), "Failed. Try again", Toast.LENGTH_SHORT).show();
+                     }
+                 } catch (Exception e) {
+                     e.printStackTrace();
+                 }
+
              }
          });
 

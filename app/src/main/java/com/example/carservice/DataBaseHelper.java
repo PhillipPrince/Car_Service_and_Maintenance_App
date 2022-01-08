@@ -118,7 +118,7 @@ public class DataBaseHelper  extends SQLiteOpenHelper {
         }
         return false;
     }
-     public ArrayList<String> myCars(){
+     public static ArrayList<String> myCars(){
         ArrayList<String> cars= new ArrayList<>();
 
         return cars;
