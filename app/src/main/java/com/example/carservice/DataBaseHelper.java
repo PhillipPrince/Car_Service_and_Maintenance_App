@@ -9,12 +9,14 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class DataBaseHelper  extends SQLiteOpenHelper {
     public static String DBName="CarUsers.db";
     public static int DBVersion=6;
     public static String tableName="user";
     public static String tableCar="tableCar";
+    private static String tableMileage="mileage";
     SQLiteDatabase sQLiteDatabase=this.getReadableDatabase();
     public DataBaseHelper(@Nullable Context context) {
         super(context, DBName, null, DBVersion);
@@ -24,12 +26,20 @@ public class DataBaseHelper  extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         this.getWritableDatabase();
 
-        String sql="create table tableName(username TEXT primary key, email TEXT, password TEXT)";
+        String sql="create table tableName(username TEXT primary key, " +
+                "email TEXT, " +
+                "password TEXT)";
 
         db.execSQL(sql);
-        db.execSQL("create table tablecar(carModel VARCHAR, fuel VARCHAR, modelYear INTEGER , " +
-                "engine VARCHAR ,chasisNo VARCHAR, engineNumber VARCHAR ,numberPlate VARCHAR, lastInsurance DATE)");
-
+        db.execSQL("create table tablecar(id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "carModel VARCHAR, " +
+                "fuel VARCHAR, " +
+                "modelYear INTEGER , " +
+                "engine VARCHAR ," +
+                "chasisNo VARCHAR, " +
+                "engineNumber VARCHAR ," +
+                "numberPlate VARCHAR, " +
+                "lastInsurance DATE)");
     }
 
     @Override
@@ -37,12 +47,10 @@ public class DataBaseHelper  extends SQLiteOpenHelper {
         db=this.getWritableDatabase();
         db.execSQL("DROP TABLE IF EXISTS "+tableName);
         db.execSQL("DROP TABLE IF EXISTS "+ tableCar);
-
     }
 
     public Boolean insertData(String username, String email, String password){
         SQLiteDatabase db=this.getWritableDatabase();
-
         ContentValues cv=new ContentValues();
         cv.put( "username", username);
         cv.put("email",email);
@@ -54,6 +62,7 @@ public class DataBaseHelper  extends SQLiteOpenHelper {
             return true;
         }
     }
+
     public Boolean checkUser(String username){
         SQLiteDatabase db=this.getWritableDatabase();
         Cursor cursor=db.rawQuery("select * from tableName where username=?",  new String[]{username});
@@ -101,8 +110,10 @@ public class DataBaseHelper  extends SQLiteOpenHelper {
     }
     public Boolean saveCar( String carModel , String fuel, int modelYear  ,
             String engine  , String chasisNo , String engineNumber  , String numberPlate ,  String lastInsurance ){
+        int id=0;
         SQLiteDatabase db=this.getWritableDatabase();
         ContentValues contentValues=new ContentValues();
+        contentValues.put("id", id );
         contentValues.put("carModel", carModel);
         contentValues.put("fuel", fuel);
         contentValues.put("modelYear", modelYear);
@@ -118,10 +129,43 @@ public class DataBaseHelper  extends SQLiteOpenHelper {
         }
         return false;
     }
-     public static ArrayList<String> myCars(){
-        ArrayList<String> cars= new ArrayList<>();
+     public List<AvailableCars> myCars(){
+         SQLiteDatabase db=this.getReadableDatabase();
+         String sql="SELECT * FROM "+tableCar;
 
-        return cars;
+         Cursor cursor=null;
+         List<AvailableCars> availableCars=new ArrayList<>();
+         try {
+             cursor= db.rawQuery(sql, null);
+             cursor.moveToFirst();
+             while(cursor.moveToNext()){
+                 AvailableCars avCars=new AvailableCars();
+                 avCars.setCarId(cursor.getInt(0));
+                 avCars.setCarModel(cursor.getString(1));
+                 avCars.setFuel(cursor.getString(2));
+                 avCars.setModelYear(cursor.getString(3));
+                 avCars.setEngine(cursor.getString(4));
+                 avCars.setChassisNo(cursor.getString(5));
+                 avCars.setEngineNo(cursor.getString(6));
+                 avCars.setNumberPlate(cursor.getString(7));
+                 avCars.setLastInsurance(cursor.getString(8));
+                 availableCars.add(avCars);
+             }
+
+         } catch (Exception e) {
+             e.printStackTrace();
+         }
+         cursor.close();
+         db.close();
+
+
+
+         return availableCars;
+
+     }
+
+     public void allCars(){
+        SQLiteDatabase db=this.getReadableDatabase();
      }
 
 }

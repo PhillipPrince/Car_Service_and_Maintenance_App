@@ -9,6 +9,6 @@ public class mechanic extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mecanich);
+        setContentView(R.layout.activity_mechanic);
     }
 }

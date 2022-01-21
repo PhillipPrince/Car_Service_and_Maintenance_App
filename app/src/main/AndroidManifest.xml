@@ -10,13 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CarService">
         <activity
+            android:name=".mechanic"
+            android:exported="false" />
+        <activity
             android:name=".car"
             android:exported="false"
             android:label="@string/title_activity_car"
             android:theme="@style/Theme.CarService.NoActionBar" />
-        <activity
-            android:name=".mechanic"
-            android:exported="false" />
         <activity
             android:name=".myservice"
             android:exported="false"
@@ -24,6 +24,7 @@
             android:theme="@style/Theme.CarService.NoActionBar" />
         <activity android:name=".home" />
         <activity android:name=".newUser" />
+        <activity android:name=".service" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -74,6 +74,7 @@ public class home extends AppCompatActivity implements NavigationView.OnNavigati
             drawerLayout.closeDrawer(GravityCompat.START);
         }else {
             super.onBackPressed();
+            return;
         }
 
     }
@@ -86,10 +87,7 @@ public class home extends AppCompatActivity implements NavigationView.OnNavigati
         if(item.getItemId()==R.id.home){
             intent=new Intent(getApplicationContext(), home.class);
             startActivity(intent);
-        } else if(item.getItemId()==R.id.service){
-             intent =new Intent(getApplicationContext(), myservice.class);
-            startActivity(intent);
-        }else if (item.getItemId()==R.id.mechanic){
+        } else if (item.getItemId()==R.id.mechanic){
             intent=new Intent(getApplicationContext(), mechanic.class);
             startActivity(intent);
         }else if (item.getItemId()==R.id.carExpenses){

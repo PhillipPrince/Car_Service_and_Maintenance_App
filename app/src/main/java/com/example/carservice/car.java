@@ -1,6 +1,7 @@
 package com.example.carservice;
 
 import android.app.DatePickerDialog;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -18,6 +19,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 public class car extends AppCompatActivity implements  DatePickerDialog.OnDateSetListener{
     EditText carModel, fuel, modelYear, engine, chasisNo,engineNumber, numberPlate, lastInsurance;
@@ -33,6 +35,7 @@ public class car extends AppCompatActivity implements  DatePickerDialog.OnDateSe
         floatingActionButton=findViewById(R.id.fab);
         carList=findViewById(R.id.carList);
         db=new DataBaseHelper(getApplicationContext());
+
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -41,11 +44,47 @@ public class car extends AppCompatActivity implements  DatePickerDialog.OnDateSe
         });
 
 
-        ArrayList<String> cars = new ArrayList<>();
-        cars.add(String.valueOf(DataBaseHelper.myCars()));
+        //final List<AvailableCars> list=db.myCars();
+        final ArrayList<String> arrayList=new ArrayList();
+        arrayList.add("My Cars");
 
-        ArrayAdapter adapter=new ArrayAdapter(getApplicationContext(),android.R.layout.simple_list_item_1, cars);
-        carList.setAdapter(adapter);
+       try{
+            Cursor cursor=null;
+            String sql="SELECT * FROM tableCar";
+            cursor=db.sQLiteDatabase.rawQuery(sql, null);
+
+           final List<AvailableCars> list=db.myCars();
+            cursor.moveToFirst();
+            while (cursor.moveToNext()){
+
+                arrayList.add(cursor.toString());
+                for(int i=0; i<list.size(); i++){
+
+                    arrayList.add(list.get(i).getCarModel());
+                }
+            }
+            //cursor.close();
+            ArrayAdapter arrayAdapter=new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, arrayList);
+            carList.setAdapter(arrayAdapter);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+
+       // ArrayAdapter arrayAdapter=new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, arrayList);
+       // carList.setAdapter(arrayAdapter);
+
+
+
+
+       /* for(int i=0; i<list.size(); i++){
+            arrayList.add(list.get(i).getCarModel());
+        }
+
+*/
+
+//389014436
 
 
     }
@@ -66,14 +105,7 @@ public class car extends AppCompatActivity implements  DatePickerDialog.OnDateSe
         cancel=findViewById(R.id.cancel);
 
 
-        String cm=carModel.getText().toString();
-        String f=fuel.getText().toString();
-        String my= modelYear.getText().toString();
-        String eng=engine.getText().toString();
-        String chas=chasisNo.getText().toString();
-        String engNo=engineNumber.getText().toString();
-        String nplate=numberPlate.getText().toString();
-        String ins=lastInsurance.getText().toString();
+
 
         lastInsurance.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,17 +119,32 @@ public class car extends AppCompatActivity implements  DatePickerDialog.OnDateSe
              @Override
              public void onClick(View v) {
                  //startActivity(new Intent(getApplicationContext(), car.class));
-                 Boolean insCar=db.saveCar(cm, f, Integer.parseInt(my),eng, chas, engNo, nplate, ins);
-                 try {
+                 //Toast.makeText(getApplicationContext(), "Clicked", Toast.LENGTH_SHORT).show();
 
-                     if(insCar=true){
-                         Toast.makeText(getApplicationContext(), "Saved", Toast.LENGTH_SHORT).show();
-                     }  else {
-                         Toast.makeText(getApplicationContext(), "Failed. Try again", Toast.LENGTH_SHORT).show();
-                     }
-                 } catch (Exception e) {
-                     e.printStackTrace();
-                 }
+                 saveCar();
+                 /*String cm=carModel.getText().toString();
+                 AlertDialog.Builder builder=new AlertDialog.Builder(getApplicationContext());
+                 builder
+                         .setMessage("Do you want to save"+cm)
+                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                             @Override
+                             public void onClick(DialogInterface dialog, int which) {
+
+
+                             }
+                         })
+                         .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                             @Override
+                             public void onClick(DialogInterface dialog, int which) {
+
+                             }
+                         });
+                 AlertDialog alert = builder.create();
+                 alert.setTitle("Save Car??");
+                 alert.show();*/
+
+
+
 
              }
          });
@@ -135,6 +182,29 @@ public class car extends AppCompatActivity implements  DatePickerDialog.OnDateSe
         String date=year+"/"+month+"/"+dayOfMonth;
         lastInsurance.setText(date);
 
+    }
+    public void saveCar(){
+        String cm=carModel.getText().toString();
+        String f=fuel.getText().toString();
+        String my= modelYear.getText().toString();
+        String eng=engine.getText().toString();
+        String chas=chasisNo.getText().toString();
+        String engNo=engineNumber.getText().toString();
+        String nplate=numberPlate.getText().toString();
+        String ins=lastInsurance.getText().toString();
+
+
+
+        try {
+            Boolean insCar=db.saveCar(cm, f, Integer.parseInt(my),eng, chas, engNo, nplate, ins);
+            if(insCar=true){
+                Toast.makeText(getApplicationContext(), "Saved", Toast.LENGTH_SHORT).show();
+            }  else {
+                Toast.makeText(getApplicationContext(), "Failed. Try again", Toast.LENGTH_SHORT).show();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 

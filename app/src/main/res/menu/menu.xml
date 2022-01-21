@@ -8,9 +8,7 @@
         <item
                 android:id="@+id/Addcar"
                 android:title="Add Car"></item>
-        <item
-                android:id="@+id/service"
-                android:title="My Service"></item>
+
         <item
                 android:id="@+id/mechanic"
                 android:title="Mechanic"
