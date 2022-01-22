@@ -10,8 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CarService">
         <activity
-            android:name=".mechanic"
+            android:name=".ViewMechanicDetails"
             android:exported="false" />
+        <activity
+            android:name=".addMechanic"
+            android:exported="false" />
+        <activity
+            android:name=".mechanic"
+            android:exported="false"
+            android:label="@string/title_activity_mechanic"
+            android:theme="@style/Theme.CarService.NoActionBar" />
         <activity
             android:name=".car"
             android:exported="false"

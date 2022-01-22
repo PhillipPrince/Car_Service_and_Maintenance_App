@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         Intent intent=new Intent(getApplicationContext(), home.class);
-       // startActivity(intent);
+       startActivity(intent);
         //String sql= ("SELECT * FROM tableName where logged=1");
         String sql="SELECT *FROM tableName";
         Cursor cursor=db.sQLiteDatabase.rawQuery(sql, null);
@@ -58,19 +58,19 @@ public class MainActivity extends AppCompatActivity {
 
         }else{
             Boolean checkUser=db.checkUser(name);
-            Boolean checkMail=db.checkMail(name);
-            if(checkUser=checkMail =true){
 
 
+
+            if(checkUser=true){
+                startPb();
+            }else {
+                Boolean checkMail=db.checkMail(name);
+                if(checkMail=true){
                     Boolean checkPass=db.checkPassword(pass);
                     if(checkPass=true){
                         startPb();
-
-                    }else{
-                        error.setText("Wrong password");
                     }
-            }else{
-                error.setText("Details do not match");
+                }
             }
         }
 
@@ -87,14 +87,12 @@ public class MainActivity extends AppCompatActivity {
 
             public void run() {
                 for (int i = 0; i <= 100; i++)
-                    try {
-                        Thread.sleep(100);
-                        pb.setProgress(i);
-                        System.out.println(i);
-                        linearLayout.setActivated(false);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                {
+                   // Thread.sleep(100);
+                    pb.setProgress(i);
+                    System.out.println(i);
+                    linearLayout.setActivated(false);
+                }
                 pb.post(new Runnable() {
                     public void run() {
                         Intent intent=new Intent(getApplicationContext(), home.class);

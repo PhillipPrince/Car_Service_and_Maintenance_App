@@ -17,6 +17,7 @@ public class DataBaseHelper  extends SQLiteOpenHelper {
     public static String tableName="user";
     public static String tableCar="tableCar";
     private static String tableMileage="mileage";
+    public static  String tableMechanics="Mechanics";
     SQLiteDatabase sQLiteDatabase=this.getReadableDatabase();
     public DataBaseHelper(@Nullable Context context) {
         super(context, DBName, null, DBVersion);
@@ -40,6 +41,9 @@ public class DataBaseHelper  extends SQLiteOpenHelper {
                 "engineNumber VARCHAR ," +
                 "numberPlate VARCHAR, " +
                 "lastInsurance DATE)");
+        String mechanics="CREATE TABLE tableMechanics(id INTEGER PRIMARY KEY AUTOINCREMENT, mechName VARCHAR,mechLocation VARCHAR, mechPhone INTEEGER)";
+        db.execSQL(mechanics);
+
     }
 
     @Override
@@ -47,6 +51,7 @@ public class DataBaseHelper  extends SQLiteOpenHelper {
         db=this.getWritableDatabase();
         db.execSQL("DROP TABLE IF EXISTS "+tableName);
         db.execSQL("DROP TABLE IF EXISTS "+ tableCar);
+        db.execSQL("DROP TABLE IF EXISTS "+tableMechanics);
     }
 
     public Boolean insertData(String username, String email, String password){
@@ -129,7 +134,7 @@ public class DataBaseHelper  extends SQLiteOpenHelper {
         }
         return false;
     }
-     public List<AvailableCars> myCars(){
+     public  List<AvailableCars> myCars(){
          SQLiteDatabase db=this.getReadableDatabase();
          String sql="SELECT * FROM "+tableCar;
 
@@ -166,6 +171,22 @@ public class DataBaseHelper  extends SQLiteOpenHelper {
 
      public void allCars(){
         SQLiteDatabase db=this.getReadableDatabase();
+     }
+
+     public Boolean addMechanic(String mechName, String mechLocation, String mechPhone){
+        SQLiteDatabase db =this.getWritableDatabase();
+        ContentValues contentValues=new ContentValues();
+        int id = 0;
+        contentValues.put("id", id);
+        contentValues.put("mechName", mechName);
+        contentValues.put("mechLocation", mechLocation);
+        contentValues.put(mechPhone, mechPhone);
+        Long results=db.insert(tableMechanics, null, contentValues);
+        if(results>0){
+            return true;
+        }
+        return false;
+
      }
 
 }

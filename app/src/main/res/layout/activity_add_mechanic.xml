@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="5dp"
+    tools:context=".addMechanic">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@color/maroon"
+            android:gravity="right"
+
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Mechanic"
+                android:textColor="@color/white"
+                android:layout_gravity="start"
+                android:textSize="30dp"
+                android:layout_marginRight="100dp"
+                ></TextView>
+
+            <ImageView
+                android:id="@+id/saveMechanic"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/save"
+                android:layout_marginRight="20dp"
+                android:onClick="saveMech"
+                ></ImageView>
+
+            <ImageView
+                android:id="@+id/discard"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/cancelicon"
+
+                ></ImageView>
+
+
+
+        </LinearLayout>
+
+      <TextView
+          android:id="@+id/err"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"></TextView>
+
+
+        <EditText
+            android:id="@+id/mechName"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:hint="Mechanic's name"></EditText>
+
+        <EditText
+            android:id="@+id/mechLocation"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:hint="Location"></EditText>
+
+        <EditText
+            android:id="@+id/mechPhone"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:hint="Phone
+"
+            ></EditText>
+    </LinearLayout>
+
+</RelativeLayout>
