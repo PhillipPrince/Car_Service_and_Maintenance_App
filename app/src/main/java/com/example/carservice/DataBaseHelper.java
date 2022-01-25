@@ -41,7 +41,10 @@ public class DataBaseHelper  extends SQLiteOpenHelper {
                 "engineNumber VARCHAR ," +
                 "numberPlate VARCHAR, " +
                 "lastInsurance DATE)");
-        String mechanics="CREATE TABLE tableMechanics(id INTEGER PRIMARY KEY AUTOINCREMENT, mechName VARCHAR,mechLocation VARCHAR, mechPhone INTEEGER)";
+        String mechanics="CREATE TABLE tableMechanics(id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "mechName VARCHAR," +
+                "mechLocation VARCHAR, " +
+                "mechPhone INTEEGER)";
         db.execSQL(mechanics);
 
     }

@@ -40,34 +40,18 @@ public class mechanic extends AppCompatActivity {
 
     public  void MechanicsList(){
 
-
         ArrayList<String> mechanics=new ArrayList<>();
         mechanics.add("Mechanics List");
-
-        String sql="SELECT *FROM Mechanics";
+        String sql="SELECT name, phone FROM Mechanics";
         Cursor cursor=db.sQLiteDatabase.rawQuery(sql, null);
-        ArrayAdapter arrayAdapter=new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, mechanics);
-        mechanicsListView.setAdapter(arrayAdapter);
-
         cursor.moveToFirst();
-        mechanics.add(cursor.getString(2));
-        /* if (cursor.moveToFirst())
-        {
-            do{
-                mechanics.add(cursor.getString(0));
-
-            }while (cursor.moveToNext());
+        while (cursor.moveToNext()){
+            mechanics.add(cursor.toString());
         }
-        if (mechanics.size() >= 0)
-        {
-            for (int i=0; i<mechanics.size(); i++)
-            {
-                Log.d("TODOItems(" + i + ")", mechanics.get(i) + "");
 
 
-            }
-
-        }*/
+         ArrayAdapter grpAdapter=new ArrayAdapter(getApplicationContext(),android.R.layout.simple_list_item_1, mechanics);
+        mechanicsListView.setAdapter(grpAdapter);
         mechanicsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

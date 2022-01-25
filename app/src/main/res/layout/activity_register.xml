@@ -42,6 +42,8 @@
                 android:inputType="text"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
+                android:background="@drawable/shapes"
+                android:drawableLeft="@drawable/user"
 
         ></EditText>
         <EditText
@@ -51,9 +53,11 @@
                 android:hint="Email"
                 android:inputType="textEmailAddress"
                 android:layout_gravity="center"
-                android:layout_marginTop="10dp"
+                 android:drawableStart="@android:drawable/ic_dialog_email"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/shapes"
 
-        ></EditText>
+            android:drawableLeft="@android:drawable/ic_dialog_email"></EditText>
 
         <EditText
                 android:id="@+id/pass"
@@ -62,9 +66,12 @@
                 android:hint="Password"
                 android:inputType="textPassword"
                 android:layout_gravity="center"
-                android:layout_marginTop="10dp"
+                 android:background="@drawable/shapes"
+                android:layout_marginTop="30dp"
+                 android:drawableStart="@android:drawable/ic_lock_lock"
 
-        ></EditText>
+
+            android:drawableLeft="@android:drawable/ic_lock_lock"></EditText>
         <EditText
                 android:id="@+id/rePass"
                 android:layout_width="200dp"
@@ -72,9 +79,12 @@
                 android:hint="Retype password"
                 android:inputType="textPassword"
                 android:layout_gravity="center"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="30dp"
+            android:background="@drawable/shapes"
+            android:drawableStart="@android:drawable/ic_lock_lock"
 
-        ></EditText>
+
+            android:drawableLeft="@android:drawable/ic_lock_lock"></EditText>
 
 
 

@@ -8,13 +8,20 @@
 
 <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    L<ListView
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@drawable/mechanic"
+        ></ImageView>
+
+    <ListView
     android:id="@+id/mechanicsList"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/lightmaroon"
+    android:background="#DFB7C8"
     ></ListView>
 </LinearLayout>
 

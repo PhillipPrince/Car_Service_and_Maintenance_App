@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class addMechanic extends AppCompatActivity {
 
-    static  EditText  mechName,  mechLocation,  mechPhone;
+     EditText  mechName,  mechLocation,  mechPhone;
     ImageView save, discard;
     DataBaseHelper dataBaseHelper;
     TextView err;

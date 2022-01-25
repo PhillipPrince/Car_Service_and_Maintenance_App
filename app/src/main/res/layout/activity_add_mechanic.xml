@@ -53,6 +53,12 @@
 
         </LinearLayout>
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@drawable/mech"
+            ></ImageView>
+
       <TextView
           android:id="@+id/err"
           android:layout_width="wrap_content"
@@ -61,22 +67,24 @@
 
         <EditText
             android:id="@+id/mechName"
-            android:layout_width="200dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:hint="Mechanic's name"></EditText>
 
         <EditText
             android:id="@+id/mechLocation"
-            android:layout_width="200dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:hint="Location"></EditText>
 
         <EditText
             android:id="@+id/mechPhone"
-            android:layout_width="200dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Phone
-"
+            android:hint="Phone"
+            android:layout_gravity="center"
             ></EditText>
     </LinearLayout>
 

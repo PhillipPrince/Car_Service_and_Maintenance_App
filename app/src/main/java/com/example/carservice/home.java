@@ -33,9 +33,9 @@ public class home extends AppCompatActivity implements NavigationView.OnNavigati
         drawerLayout=findViewById(R.id.drawer);
         toolbar=findViewById(R.id.toolbar);
         myCars=findViewById(R.id.myCar);
-        fuel=findViewById(R.id.fuel);
+
         expenses=findViewById(R.id.expenses);
-        carWash=findViewById(R.id.carwash);
+
         carService=findViewById(R.id.myService);
 
         db=new DataBaseHelper(getApplicationContext());

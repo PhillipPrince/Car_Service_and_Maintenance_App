@@ -1,6 +1,8 @@
 package com.example.carservice;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
@@ -42,51 +44,6 @@ public class car extends AppCompatActivity implements  DatePickerDialog.OnDateSe
                addCar();
             }
         });
-
-
-        //final List<AvailableCars> list=db.myCars();
-        final ArrayList<String> arrayList=new ArrayList();
-        arrayList.add("My Cars");
-
-       try{
-            Cursor cursor=null;
-            String sql="SELECT * FROM tableCar";
-            cursor=db.sQLiteDatabase.rawQuery(sql, null);
-
-           final List<AvailableCars> list=db.myCars();
-            cursor.moveToFirst();
-            while (cursor.moveToNext()){
-
-                arrayList.add(cursor.toString());
-                for(int i=0; i<list.size(); i++){
-
-                    arrayList.add(list.get(i).getCarModel());
-                }
-            }
-            //cursor.close();
-            ArrayAdapter arrayAdapter=new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, arrayList);
-            carList.setAdapter(arrayAdapter);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-
-
-       // ArrayAdapter arrayAdapter=new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, arrayList);
-       // carList.setAdapter(arrayAdapter);
-
-
-
-
-       /* for(int i=0; i<list.size(); i++){
-            arrayList.add(list.get(i).getCarModel());
-        }
-
-*/
-
-//389014436
-
-
     }
 
     public void addCar(){
@@ -103,13 +60,15 @@ public class car extends AppCompatActivity implements  DatePickerDialog.OnDateSe
         lastInsurance=findViewById(R.id.lastInsurance);
         saveCar=findViewById(R.id.saveCar);
         cancel=findViewById(R.id.cancel);
+        ImageView cal=findViewById(R.id.cal);
 
 
 
 
-        lastInsurance.setOnClickListener(new View.OnClickListener() {
+        cal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Click", Toast.LENGTH_SHORT).show();
                 datePicker();
             }
         });
@@ -118,33 +77,7 @@ public class car extends AppCompatActivity implements  DatePickerDialog.OnDateSe
         saveCar.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
-                 //startActivity(new Intent(getApplicationContext(), car.class));
-                 //Toast.makeText(getApplicationContext(), "Clicked", Toast.LENGTH_SHORT).show();
-
                  saveCar();
-                 /*String cm=carModel.getText().toString();
-                 AlertDialog.Builder builder=new AlertDialog.Builder(getApplicationContext());
-                 builder
-                         .setMessage("Do you want to save"+cm)
-                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                             @Override
-                             public void onClick(DialogInterface dialog, int which) {
-
-
-                             }
-                         })
-                         .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                             @Override
-                             public void onClick(DialogInterface dialog, int which) {
-
-                             }
-                         });
-                 AlertDialog alert = builder.create();
-                 alert.setTitle("Save Car??");
-                 alert.show();*/
-
-
-
 
              }
          });
@@ -193,8 +126,9 @@ public class car extends AppCompatActivity implements  DatePickerDialog.OnDateSe
         String nplate=numberPlate.getText().toString();
         String ins=lastInsurance.getText().toString();
 
-
-
+        if(cm.equals("")){
+            Toast.makeText(getApplicationContext(), "Enter car Name", Toast.LENGTH_SHORT).show();
+        }
         try {
             Boolean insCar=db.saveCar(cm, f, Integer.parseInt(my),eng, chas, engNo, nplate, ins);
             if(insCar=true){
@@ -205,7 +139,36 @@ public class car extends AppCompatActivity implements  DatePickerDialog.OnDateSe
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+
+                 /*AlertDialog.Builder builder=new AlertDialog.Builder(getApplicationContext());
+                 builder
+                         .setMessage("Do you want to save"+cm)
+                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                             @Override
+                             public void onClick(DialogInterface dialog, int which) {
+
+
+
+                             }
+                         })
+                         .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                             @Override
+                             public void onClick(DialogInterface dialog, int which) {
+                                 return;
+                             }
+                         });
+                 AlertDialog alert = builder.create();
+                 alert.setTitle("Save Car??");
+                 alert.show();*/
+
+
+
     }
+    public void carsList(){
+        
+    }
+
 
 
 }
