@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -33,12 +34,14 @@ public class MainActivity extends AppCompatActivity {
         error=findViewById(R.id.error);
 
 
-        Intent intent=new Intent(getApplicationContext(), home.class);
-       startActivity(intent);
-        //String sql= ("SELECT * FROM tableName where logged=1");
-        String sql="SELECT *FROM tableName";
-        Cursor cursor=db.sQLiteDatabase.rawQuery(sql, null);
-        cursor.getCount();
+        Cursor cursor= db.syncDetails();
+        if(cursor !=null && cursor.getCount()>0){
+            Intent intent=new Intent(getApplicationContext(), home.class);
+
+            startActivity(intent);
+
+
+        }
 
 
     }
@@ -61,15 +64,26 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-            if(checkUser=true){
-                startPb();
-            }else {
+            if(checkUser==false){
                 Boolean checkMail=db.checkMail(name);
-                if(checkMail=true){
+                if(checkMail==true){
                     Boolean checkPass=db.checkPassword(pass);
-                    if(checkPass=true){
-                        startPb();
+                    if(checkPass==true){
+                        Toast.makeText(getApplicationContext(), "Login successful \n Welcome", Toast.LENGTH_SHORT).show();
+                        Intent intent=new Intent(getApplicationContext(), home.class);
+                        startActivity(intent);
+                    }else {
+                        Toast.makeText(getApplicationContext(), "wrong Password", Toast.LENGTH_SHORT).show();
+                        password.setText("Enter a Valid Password");
                     }
+                }else {
+                    Toast.makeText(getApplicationContext(), "Wrong Email", Toast.LENGTH_SHORT).show();
+                }
+            }else {
+                Boolean checkPass=db.checkPassword(pass);
+                if(checkPass==true){
+                    Intent intent=new Intent(getApplicationContext(), home.class);
+                    startActivity(intent);
                 }
             }
         }

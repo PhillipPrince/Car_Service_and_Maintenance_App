@@ -13,26 +13,27 @@ import java.util.List;
 
 public class DataBaseHelper  extends SQLiteOpenHelper {
     public static String DBName="CarUsers.db";
-    public static int DBVersion=6;
+    public static int DBVersion=10;
     public static String tableName="user";
     public static String tableCar="tableCar";
     private static String tableMileage="mileage";
     public static  String tableMechanics="Mechanics";
-    SQLiteDatabase sQLiteDatabase=this.getReadableDatabase();
+    //SQLiteDatabase sQLiteDatabase=this.getWritableDatabase();
+    SQLiteDatabase db=this.getWritableDatabase();
     public DataBaseHelper(@Nullable Context context) {
         super(context, DBName, null, DBVersion);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        this.getWritableDatabase();
 
-        String sql="create table tableName(username TEXT primary key, " +
+
+        String sql="create table "+tableName+" (Id INTEGER primary key AUTOINCREMENT, username TEXT , " +
                 "email TEXT, " +
                 "password TEXT)";
 
         db.execSQL(sql);
-        db.execSQL("create table tablecar(id INTEGER PRIMARY KEY AUTOINCREMENT," +
+        db.execSQL("create table "+ tableCar+" (id INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "carModel VARCHAR, " +
                 "fuel VARCHAR, " +
                 "modelYear INTEGER , " +
@@ -41,7 +42,8 @@ public class DataBaseHelper  extends SQLiteOpenHelper {
                 "engineNumber VARCHAR ," +
                 "numberPlate VARCHAR, " +
                 "lastInsurance DATE)");
-        String mechanics="CREATE TABLE tableMechanics(id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+
+        String mechanics="CREATE TABLE "+ tableMechanics+"(id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "mechName VARCHAR," +
                 "mechLocation VARCHAR, " +
                 "mechPhone INTEEGER)";
@@ -51,14 +53,15 @@ public class DataBaseHelper  extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db=this.getWritableDatabase();
-        db.execSQL("DROP TABLE IF EXISTS "+tableName);
+
+        db.execSQL("DROP TABLE IF EXISTS "+ tableName);
         db.execSQL("DROP TABLE IF EXISTS "+ tableCar);
-        db.execSQL("DROP TABLE IF EXISTS "+tableMechanics);
+        db.execSQL("DROP TABLE IF EXISTS "+ tableMechanics);
+        onCreate(db);
     }
 
     public Boolean insertData(String username, String email, String password){
-        SQLiteDatabase db=this.getWritableDatabase();
+
         ContentValues cv=new ContentValues();
         cv.put( "username", username);
         cv.put("email",email);
@@ -72,8 +75,8 @@ public class DataBaseHelper  extends SQLiteOpenHelper {
     }
 
     public Boolean checkUser(String username){
-        SQLiteDatabase db=this.getWritableDatabase();
-        Cursor cursor=db.rawQuery("select * from tableName where username=?",  new String[]{username});
+
+        Cursor cursor=db.rawQuery("select * from "+ tableName+" where username=?",  new String[]{username});
         if(cursor.getCount()>0){
             return  true;
         }else {
@@ -82,9 +85,9 @@ public class DataBaseHelper  extends SQLiteOpenHelper {
     }
 
     public Boolean checkMail(String email){
-        SQLiteDatabase db=this.getWritableDatabase();
+
         String sql="select * from users where username=?";
-        Cursor cursor=db.rawQuery("select * from tableName where email=?",  new String[]{email});
+        Cursor cursor=db.rawQuery("select * from "+tableName+" where email=?",  new String[]{email});
         if(cursor.getCount()>0){
             return  true;
         }else {
@@ -92,8 +95,8 @@ public class DataBaseHelper  extends SQLiteOpenHelper {
         }
     }
     public Boolean checkPassword(String pass){
-        SQLiteDatabase db=this.getWritableDatabase();
-        Cursor cursor=db.rawQuery("select *from tableName where password=?", new String[]{pass});
+
+        Cursor cursor=db.rawQuery("select *from "+ tableName+" where password=?", new String[]{pass});
         if(cursor.getCount()>0){
             return true;
         }else {
@@ -101,10 +104,10 @@ public class DataBaseHelper  extends SQLiteOpenHelper {
         }
     }
     public Cursor syncDetails() {
-        SQLiteDatabase db=this.getReadableDatabase();
+
         Cursor cursor=null;
         try {
-            String sql= ("SELECT * FROM tableName where logged=1");
+            String sql= ("SELECT * FROM "+tableName+" where logged=1");
             cursor= db.rawQuery(sql, null);
             if (cursor.getCount()>0) {
                 cursor.moveToFirst();
@@ -118,10 +121,9 @@ public class DataBaseHelper  extends SQLiteOpenHelper {
     }
     public Boolean saveCar( String carModel , String fuel, int modelYear  ,
             String engine  , String chasisNo , String engineNumber  , String numberPlate ,  String lastInsurance ){
-        int id=0;
-        SQLiteDatabase db=this.getWritableDatabase();
+
         ContentValues contentValues=new ContentValues();
-        contentValues.put("id", id );
+
         contentValues.put("carModel", carModel);
         contentValues.put("fuel", fuel);
         contentValues.put("modelYear", modelYear);
@@ -138,7 +140,7 @@ public class DataBaseHelper  extends SQLiteOpenHelper {
         return false;
     }
      public  List<AvailableCars> myCars(){
-         SQLiteDatabase db=this.getReadableDatabase();
+
          String sql="SELECT * FROM "+tableCar;
 
          Cursor cursor=null;
@@ -164,20 +166,29 @@ public class DataBaseHelper  extends SQLiteOpenHelper {
              e.printStackTrace();
          }
          cursor.close();
-         db.close();
-
-
-
          return availableCars;
-
      }
 
-     public void allCars(){
-        SQLiteDatabase db=this.getReadableDatabase();
+     public List<myMechanics> myMechs(){
+        String sql="SELECT *FROM " +tableMechanics;
+        Cursor cursor=null;
+        List<myMechanics> mechanics=new ArrayList<>();
+        cursor= db.rawQuery(sql, null);
+        cursor.moveToFirst();
+        while (cursor.moveToNext()){
+            myMechanics mechs=new myMechanics();
+            mechs.setId(cursor.getInt(0));
+            mechs.setMechName(cursor.getString(1));
+            mechs.setMechPhone(cursor.getString(2));
+            mechs.setMechLocation(cursor.getString(3));
+            mechanics.add(mechs);
+        }
+        return mechanics;
      }
+
+
 
      public Boolean addMechanic(String mechName, String mechLocation, String mechPhone){
-        SQLiteDatabase db =this.getWritableDatabase();
         ContentValues contentValues=new ContentValues();
         int id = 0;
         contentValues.put("id", id);

@@ -3,6 +3,7 @@ package com.example.carservice;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
@@ -44,6 +45,8 @@ public class car extends AppCompatActivity implements  DatePickerDialog.OnDateSe
                addCar();
             }
         });
+
+        carsList();
     }
 
     public void addCar(){
@@ -133,6 +136,7 @@ public class car extends AppCompatActivity implements  DatePickerDialog.OnDateSe
             Boolean insCar=db.saveCar(cm, f, Integer.parseInt(my),eng, chas, engNo, nplate, ins);
             if(insCar=true){
                 Toast.makeText(getApplicationContext(), "Saved", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getApplicationContext(), car.class));
             }  else {
                 Toast.makeText(getApplicationContext(), "Failed. Try again", Toast.LENGTH_SHORT).show();
             }
@@ -166,7 +170,17 @@ public class car extends AppCompatActivity implements  DatePickerDialog.OnDateSe
 
     }
     public void carsList(){
-        
+         db=new DataBaseHelper(getApplicationContext());
+
+        final List<AvailableCars> list=db.myCars();
+        final ArrayList<String> arrayList=new ArrayList();
+
+        for(int i=0; i<list.size(); i++){
+            arrayList.add(list.get(i).getCarId()+list.get(i).getCarModel());
+
+        }
+        ArrayAdapter arrayAdapter=new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, arrayList);
+        carList.setAdapter(arrayAdapter);
     }
 
 

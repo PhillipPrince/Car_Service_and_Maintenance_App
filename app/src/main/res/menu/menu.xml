@@ -4,7 +4,9 @@
     <group android:checkableBehavior="single">
         <item
         android:id="@+id/home"
-        android:title="Home"></item>
+        android:title="Home"
+            android:icon="@drawable/ic_home_black_24dp"
+            ></item>
         <item
                 android:id="@+id/Addcar"
                 android:title="Add Car"></item>
@@ -19,7 +21,9 @@
                 android:title="Car Expenses"></item>
         <item
                 android:id="@+id/notification"
-                android:title="Notifications"></item>
+                android:title="Notifications"
+            android:icon="@drawable/ic_notifications_black_24dp"
+            ></item>
     </group>
 
     <item android:title="Profile">

@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CarService">
         <activity
+            android:name=".Notifications"
+            android:exported="false" />
+        <activity
             android:name=".ViewMechanicDetails"
             android:exported="false" />
         <activity

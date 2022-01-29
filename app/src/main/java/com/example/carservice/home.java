@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -21,7 +22,8 @@ public class home extends AppCompatActivity implements NavigationView.OnNavigati
     NavigationView navigationView;
     Toolbar toolbar;
     DataBaseHelper db;
-    ImageView myCars, carService, carWash, expenses, fuel;
+    ImageView myCars,  expenses;
+    LinearLayout carService;
 
 
     @Override
@@ -58,12 +60,7 @@ public class home extends AppCompatActivity implements NavigationView.OnNavigati
                 startActivity(intent);
             }
         });
-        carService.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                myService();
-            }
-        });
+
 
     }
 
@@ -99,9 +96,10 @@ public class home extends AppCompatActivity implements NavigationView.OnNavigati
         }
         return true;
     }
-    public void myService(){
-Intent intent=new Intent(getApplicationContext(), service.class);
-startActivity(intent);
-    }
 
+
+    public void myService(View view) {
+        Intent intent=new Intent(getApplicationContext(), service.class);
+        startActivity(intent);
+    }
 }

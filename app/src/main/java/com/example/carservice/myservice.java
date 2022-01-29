@@ -22,15 +22,6 @@ public class myservice extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_myservice2);
 
-       /* binding = ActivityMyservice2Binding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
-
-        SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
-        ViewPager viewPager = binding.viewPager;
-        viewPager.setAdapter(sectionsPagerAdapter);
-        TabLayout tabs = binding.tabs;
-        tabs.setupWithViewPager(viewPager);
-        //tabs.getTabAt(0).setIcon(R.drawable.car);*/
 
             viewPager2=findViewById(R.id.view_pager);
             tabLayout=findViewById(R.id.tabs);

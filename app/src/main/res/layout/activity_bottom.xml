@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="?attr/actionBarSize">
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:background="?android:attr/windowBackground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:menu="@menu/bottom_nav_menu" />
+
+    <fragment
+        android:id="@+id/nav_host_fragment_activity_bottom"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:defaultNavHost="true"
+        app:layout_constraintBottom_toTopOf="@id/nav_view"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navGraph="@navigation/mobile_navigation" />
+
+
+    <com.google.android.material.navigation.NavigationView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:headerLayout="@layout/headers"
+        android:id="@+id/navigatio"
+        android:layout_gravity="start"
+        app:menu="@menu/menu"
+        tools:ignore="MissingConstraints"></com.google.android.material.navigation.NavigationView>
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        tools:ignore="MissingConstraints">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+
+            >
+            <include
+                android:id="@+id/toolbar"
+                layout="@layout/toolbar"
+                ></include>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                android:background="@drawable/layoutshape"
+                android:backgroundTint="#8F7C84"
+                android:layout_marginTop="10dp"
+                >
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/car"
+                    android:layout_gravity="center"
+                    ></ImageView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Next Service"
+                    android:layout_gravity="center"
+                    android:textColor="@color/white"
+                    ></TextView>
+
+                <LinearLayout android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@color/maroon"
+                    android:layout_gravity="center"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Date:"
+                        android:textColor="@color/white"
+                        ></TextView>
+                    <TextView android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:inputType="date"
+                        android:hint="dd/mm/yyy"
+                        android:layout_marginLeft="5dp"
+                        android:textColor="@color/white"
+
+                        ></TextView>
+                </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="MILEAGE"
+                    android:layout_gravity="center"
+                    android:textColor="@color/white"
+                    android:layout_marginTop="10dp"
+                    ></TextView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="0000:"
+                    android:layout_gravity="center"
+                    android:textColor="@color/white"
+                    ></TextView>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/myService"
+                android:paddingLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="@color/concrete"
+                android:background="@drawable/shapes"
+                android:onClick="myService"
+                android:layout_gravity="center"
+                >
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/service"
+
+                    ></ImageView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="My Car Service"
+                    android:layout_gravity="center"
+                    android:textSize="20dp"
+                    tools:layout_editor_absoluteX="16dp"></TextView>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ec"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="@color/concrete"
+                android:background="@drawable/shapes"
+                >
+                <ImageView
+                    android:layout_width="88dp"
+                    android:layout_height="71dp"
+                    android:src="@drawable/quote"
+                    android:id="@+id/expenses"
+                    android:paddingLeft="10dp"
+                    android:layout_gravity="center"
+                    ></ImageView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Car Expenses"
+                    android:layout_marginTop="5dp"
+                    android:textSize="20dp"
+                    android:layout_gravity="center"
+                    ></TextView>
+            </LinearLayout>
+            <LinearLayout android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/shapes"
+                android:backgroundTint="@color/concrete"
+                android:layout_gravity="center"
+                >
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/mycar"
+                    android:id="@+id/myCar"
+                    android:paddingLeft="10dp"
+                    android:layout_gravity="center"
+                    ></ImageView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="My Cars"
+                    android:textSize="20dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_gravity="center"></TextView>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

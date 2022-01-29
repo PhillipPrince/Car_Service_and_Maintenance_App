@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class mechanic extends AppCompatActivity {
 
@@ -40,26 +41,16 @@ public class mechanic extends AppCompatActivity {
 
     public  void MechanicsList(){
 
-        ArrayList<String> mechanics=new ArrayList<>();
-        mechanics.add("Mechanics List");
-        String sql="SELECT name, phone FROM Mechanics";
-        Cursor cursor=db.sQLiteDatabase.rawQuery(sql, null);
-        cursor.moveToFirst();
-        while (cursor.moveToNext()){
-            mechanics.add(cursor.toString());
+        db=new DataBaseHelper(getApplicationContext());
+
+        final List<myMechanics> list=db.myMechs();
+        final ArrayList<String> arrayList=new ArrayList();
+
+        for(int i=0; i<list.size(); i++){
+            arrayList.add(list.get(i).getId()+list.get(i).getMechName());
         }
-
-
-         ArrayAdapter grpAdapter=new ArrayAdapter(getApplicationContext(),android.R.layout.simple_list_item_1, mechanics);
-        mechanicsListView.setAdapter(grpAdapter);
-        mechanicsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-            }
-        });
-
-
+        ArrayAdapter arrayAdapter=new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, arrayList);
+        mechanicsListView.setAdapter(arrayAdapter);
 
     }
 
