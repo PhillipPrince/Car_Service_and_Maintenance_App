@@ -104,13 +104,15 @@ public class DataBaseHelper  extends SQLiteOpenHelper {
         }
     }
     public Cursor syncDetails() {
-
+        SQLiteDatabase db=this.getReadableDatabase();
         Cursor cursor=null;
         try {
             String sql= ("SELECT * FROM "+tableName+" where logged=1");
             cursor= db.rawQuery(sql, null);
             if (cursor.getCount()>0) {
                 cursor.moveToFirst();
+                UserDetails.INSTANCE.setUserId(cursor.getInt(0));
+                UserDetails.INSTANCE.setName(cursor.getString(1));
             }
         } catch (Exception e) {
             e.printStackTrace();

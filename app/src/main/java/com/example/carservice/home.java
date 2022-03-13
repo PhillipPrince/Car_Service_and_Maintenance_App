@@ -22,8 +22,7 @@ public class home extends AppCompatActivity implements NavigationView.OnNavigati
     NavigationView navigationView;
     Toolbar toolbar;
     DataBaseHelper db;
-    ImageView myCars,  expenses;
-    LinearLayout carService;
+    LinearLayout carService, myCars,  expenses;;
 
 
     @Override
@@ -85,8 +84,7 @@ public class home extends AppCompatActivity implements NavigationView.OnNavigati
             intent=new Intent(getApplicationContext(), home.class);
             startActivity(intent);
         } else if (item.getItemId()==R.id.mechanic){
-            intent=new Intent(getApplicationContext(), mechanic.class);
-            startActivity(intent);
+            startActivity(new Intent(getApplicationContext(), mechanic.class));
         }else if (item.getItemId()==R.id.carExpenses){
             setContentView(R.layout.carexpenses);
 
@@ -101,5 +99,13 @@ public class home extends AppCompatActivity implements NavigationView.OnNavigati
     public void myService(View view) {
         Intent intent=new Intent(getApplicationContext(), service.class);
         startActivity(intent);
+    }
+
+    public void carExpenses(View view) {
+        startActivity(new Intent(getApplicationContext(), CarExpenses.class));
+    }
+
+    public void cars(View view) {
+        startActivity(new Intent(getApplicationContext(), car.class));
     }
 }

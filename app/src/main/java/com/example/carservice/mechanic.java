@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,42 +18,16 @@ import java.util.List;
 
 public class mechanic extends AppCompatActivity {
 
-  FloatingActionButton addMechanic;
-  ListView mechanicsListView;
-  DataBaseHelper db;
 
+    TextView mechanicMode;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mechanic);
-        addMechanic=findViewById(R.id.addMechanic);
-        mechanicsListView=findViewById(R.id.mechanicsList);
-        db=new DataBaseHelper(getApplicationContext());
-
-        MechanicsList();
-
-
+        mechanicMode=findViewById(R.id.mechanicMode);
 
     }
-    public void addMechanic(View v){
-        Intent intent=new Intent(getApplicationContext(), addMechanic.class);
-        startActivity(intent);
+    public void mechanicMode(View view) {
+        mechanicMode.setText("Switch to User Mode");
     }
-
-    public  void MechanicsList(){
-
-        db=new DataBaseHelper(getApplicationContext());
-
-        final List<myMechanics> list=db.myMechs();
-        final ArrayList<String> arrayList=new ArrayList();
-
-        for(int i=0; i<list.size(); i++){
-            arrayList.add(list.get(i).getId()+list.get(i).getMechName());
-        }
-        ArrayAdapter arrayAdapter=new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, arrayList);
-        mechanicsListView.setAdapter(arrayAdapter);
-
-    }
-
-
 }

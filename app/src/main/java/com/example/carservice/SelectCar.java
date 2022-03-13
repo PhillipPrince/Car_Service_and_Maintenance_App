@@ -56,14 +56,7 @@ Spinner selectCar;
         ArrayAdapter arrayAdapter=new ArrayAdapter(getContext(), android.R.layout.simple_spinner_item, arrayList);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         selectCar.setAdapter(arrayAdapter);
-        selectCar.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            selectCar.getSelectedItem();
-            carDetails.INSTANCE.setCarId(list.get(position).getCarId());
-                
-            }
-        });
+
 
     }
 

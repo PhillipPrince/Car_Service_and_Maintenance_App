@@ -34,21 +34,19 @@ public class MainActivity extends AppCompatActivity {
         error=findViewById(R.id.error);
 
 
-        Cursor cursor= db.syncDetails();
+       startActivity(new Intent(MainActivity.this, home.class));
+      /*  Cursor cursor= db.syncDetails();
         if(cursor !=null && cursor.getCount()>0){
             Intent intent=new Intent(getApplicationContext(), home.class);
-
             startActivity(intent);
-
-
-        }
+        }*/
 
 
     }
 
     public void signUp(View view) {
-        Intent intent=new Intent(getApplicationContext(), newUser.class);
-        startActivity(intent);
+
+        startActivity(new Intent(getApplicationContext(), newUser.class));
     }
 
     public void login(View view) {
@@ -61,8 +59,6 @@ public class MainActivity extends AppCompatActivity {
 
         }else{
             Boolean checkUser=db.checkUser(name);
-
-
 
             if(checkUser==false){
                 Boolean checkMail=db.checkMail(name);
@@ -77,13 +73,15 @@ public class MainActivity extends AppCompatActivity {
                         password.setText("Enter a Valid Password");
                     }
                 }else {
-                    Toast.makeText(getApplicationContext(), "Wrong Email", Toast.LENGTH_SHORT).show();
-                }
-            }else {
-                Boolean checkPass=db.checkPassword(pass);
-                if(checkPass==true){
-                    Intent intent=new Intent(getApplicationContext(), home.class);
-                    startActivity(intent);
+                    if(checkUser==true){
+                        Boolean checkPass=db.checkPassword(pass);
+                        if(checkPass==true){
+                            Toast.makeText(getApplicationContext(), "Login successful \n Welcome", Toast.LENGTH_SHORT).show();
+                            Intent intent=new Intent(getApplicationContext(), home.class);
+                            startActivity(intent);
+                        }
+                    }
+
                 }
             }
         }
@@ -92,31 +90,5 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void startPb() {
-
-        final ProgressBar pb = (ProgressBar) findViewById(R.id.progressBar);
-        pb.setIndeterminate(false);
-        pb.setProgress(0);
-        new Thread(new Runnable() {
-
-            public void run() {
-                for (int i = 0; i <= 100; i++)
-                {
-                   // Thread.sleep(100);
-                    pb.setProgress(i);
-                    System.out.println(i);
-                    linearLayout.setActivated(false);
-                }
-                pb.post(new Runnable() {
-                    public void run() {
-                        Intent intent=new Intent(getApplicationContext(), home.class);
-                        startActivity(intent);
-                        pb.incrementProgressBy(1);
-                    }
-                });
-
-            }
-        }).start();
-    }
 
 }
