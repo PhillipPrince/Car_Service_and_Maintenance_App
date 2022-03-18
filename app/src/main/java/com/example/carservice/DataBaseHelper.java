@@ -171,6 +171,22 @@ public class DataBaseHelper  extends SQLiteOpenHelper {
          return availableCars;
      }
 
+    public void selectedCar(String number){
+
+        Cursor cursor=db.rawQuery("select * from "+tableCar+" where numberPlate=?",  new String[]{number});
+        if(cursor.getCount()>0){
+            SelectedCarDetails cardet=new SelectedCarDetails();
+            cardet.setCarModel(cursor.getString(1));
+            cardet.setModelYear(cursor.getString(3));
+            cardet.setEngine(cursor.getString(4));
+            cardet.setChassisNo(cursor.getString(5));
+            cardet.setEngineNo(cursor.getString(6));
+            cardet.setNumberPlate(cursor.getString(7));
+            cardet.setLastInsurance(cursor.getString(8));
+        }else {
+        }
+    }
+
      public List<myMechanics> myMechs(){
         String sql="SELECT *FROM " +tableMechanics;
         Cursor cursor=null;
@@ -190,19 +206,7 @@ public class DataBaseHelper  extends SQLiteOpenHelper {
 
 
 
-     public Boolean addMechanic(String mechName, String mechLocation, String mechPhone){
-        ContentValues contentValues=new ContentValues();
-        int id = 0;
-        contentValues.put("id", id);
-        contentValues.put("mechName", mechName);
-        contentValues.put("mechLocation", mechLocation);
-        contentValues.put(mechPhone, mechPhone);
-        Long results=db.insert(tableMechanics, null, contentValues);
-        if(results>0){
-            return true;
-        }
-        return false;
 
-     }
+
 
 }

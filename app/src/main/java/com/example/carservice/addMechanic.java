@@ -30,24 +30,5 @@ public class addMechanic extends AppCompatActivity {
 
         dataBaseHelper=new DataBaseHelper(getApplicationContext());
     }
-    public void saveMech(View view){
 
-       String mech=mechName.getText().toString();
-       String mechLoc=mechLocation.getText().toString();
-       String mechPh=mechPhone.getText().toString();
-
-       Boolean saveMechanic=dataBaseHelper.addMechanic(mech, mechLoc, mechPh);
-       if(mech.equals("") || mechLoc.equals("") || mechPh.equals("")){
-        err.setText("Enter all details");
-       }else{
-
-           if(saveMechanic=true){
-               Toast.makeText(getApplicationContext(), "Saved", Toast.LENGTH_SHORT).show();
-               startActivity(new Intent(getApplicationContext(), mechanic.class));
-           }else{
-               Toast.makeText(getApplicationContext(), "Something went wrong, Retry", Toast.LENGTH_LONG).show();
-           }
-       }
-
-    }
 }

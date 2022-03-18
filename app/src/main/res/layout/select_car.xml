@@ -29,23 +29,13 @@
             android:id="@+id/mileage"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
-            android:hint="Service Type"
+            android:hint="Mileage"
             android:padding="10dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/shapes"
             ></EditText>
 
-        <EditText
-            android:id="@+id/fuel_type"
-            android:layout_width="350dp"
-            android:layout_height="wrap_content"
-            android:hint="Fuel"
-            android:padding="10dp"
-            android:background="@drawable/shapes"
-            android:layout_marginTop="20dp"
-            ></EditText>
-
-        <EditText
+        <TextView
             android:id="@+id/number_plate"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
@@ -53,23 +43,16 @@
             android:padding="10dp"
             android:background="@drawable/shapes"
             android:layout_marginTop="20dp"
-            ></EditText>
+            ></TextView>
 
-        <EditText
-            android:id="@+id/garage_name"
-            android:layout_width="350dp"
-            android:layout_height="wrap_content"
-            android:hint="Garage Name"
-            android:padding="10dp"
-            android:background="@drawable/shapes"
-            android:layout_marginTop="20dp"
-            ></EditText>
+
 
 
         <Button
+            android:id="@+id/startService"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Save"
+            android:text="Start Service"
             android:layout_gravity="right"
 
     ></Button>

@@ -35,66 +35,13 @@
             >
 
             </include>
-            <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:orientation="vertical"
-                    android:background="@drawable/layoutshape"
-                android:backgroundTint="#8F7C84"
-                    android:layout_marginTop="10dp"
-            >
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:src="@drawable/car"
-                    android:layout_gravity="center"
-                    ></ImageView>
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Next Service"
-                        android:layout_gravity="center"
-                        android:textColor="@color/white"
-                ></TextView>
 
-                <LinearLayout android:layout_width="wrap_content"
-                              android:layout_height="wrap_content"
-                              android:orientation="horizontal"
-                              android:background="@color/maroon"
-                    android:layout_gravity="center"
-                >
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Date:"
-                            android:textColor="@color/white"
-                    ></TextView>
-                    <TextView android:layout_width="wrap_content"
-                              android:layout_height="wrap_content"
-                              android:inputType="date"
-                              android:hint="dd/mm/yyy"
-                              android:layout_marginLeft="5dp"
-                              android:textColor="@color/white"
-
-                    ></TextView>
-                </LinearLayout>
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="MILEAGE"
-                        android:layout_gravity="center"
-                        android:textColor="@color/white"
-                        android:layout_marginTop="10dp"
-                ></TextView>
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:hint="0000:"
-                        android:layout_gravity="center"
-                        android:textColor="@color/white"
-                ></TextView>
-            </LinearLayout>
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/car"
+                android:layout_gravity="center"
+                ></ImageView>
                 <LinearLayout
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"

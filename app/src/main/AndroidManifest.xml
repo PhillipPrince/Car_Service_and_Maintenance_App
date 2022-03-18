@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CarService">
         <activity
+            android:name=".Car_Details"
+            android:exported="false" />
+        <activity
+            android:name=".MyCarDetails"
+            android:exported="false" />
+        <activity
             android:name=".CarExpenses"
             android:exported="false" />
         <activity
