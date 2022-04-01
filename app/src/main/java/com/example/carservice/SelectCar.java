@@ -42,8 +42,6 @@ Spinner selectCar;
         return view;
     }
 
-
-
     public void carList(){
 
 
@@ -62,9 +60,9 @@ Spinner selectCar;
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                numberPlate.setText(list.get(position).getNumberPlate());
-               String number=numberPlate.getText().toString();
-               DataBaseHelper db=new DataBaseHelper(getContext());
-               db.selectedCar(number);
+               //String number=numberPlate.getText().toString();
+               //DataBaseHelper db=new DataBaseHelper(getContext());
+
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {

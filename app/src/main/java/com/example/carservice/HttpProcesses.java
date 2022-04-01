@@ -17,24 +17,25 @@ public class HttpProcesses {
         String type = strings[0];
 
         //String ttucu=MainActivity.ip.getText().toString();
-        String ttucu="http://ttucu.c1.biz/church/TTUCU.php";
+        String serviceUrl="http://localhost/carservice/carservice.php";
         //String ttucu="http://localhost/login/loginTTUCU.php";
         try {
 
             URL url=null;
             String insert_data="";
             if (type.equals("reg")) {
-                String regUrl="http://localhost/carservice/register.php";
-                url = new URL(regUrl);
+
+                url = new URL(serviceUrl);
                 String name = strings[1];
                 String phone = strings[2];
                 String email = strings[3];
                 String password = strings[4];
-                insert_data=URLEncoder.encode("name", "UTF-8") + "=" + URLEncoder.encode(name, "UTF-8")
-                        +"&&"+URLEncoder.encode("name", "UTF-8") + "=" + URLEncoder.encode(phone, "UTF-8")
-                        + "&&" + URLEncoder.encode("email", "UTF-8") + "=" + URLEncoder.encode(email, "UTF-8")
+                insert_data=URLEncoder.encode("operation", "UTF-8") + "=" + URLEncoder.encode("register", "UTF-8")
+                        +"&&"+URLEncoder.encode("name", "UTF-8") + "=" + URLEncoder.encode(name, "UTF-8")
+                        + "&&" + URLEncoder.encode("email_address", "UTF-8") + "=" + URLEncoder.encode(email, "UTF-8")
+                        + "&&" + URLEncoder.encode("phone", "UTF-8") + "=" + URLEncoder.encode(phone, "UTF-8")
                         + "&&" + URLEncoder.encode("password", "UTF-8") + "=" + URLEncoder.encode(password, "UTF-8");
-            }  else if (type.equals("login")) {
+            } /* else if (type.equals("login")) {
                 url = new URL(ttucu);
                 String user_name = strings[1];
                 String password = strings[2];
@@ -49,7 +50,7 @@ public class HttpProcesses {
                 insert_data = URLEncoder.encode("operation", "UTF-8") + "=" + URLEncoder.encode("joinMinistry", "UTF-8")
                        +"&&"+ URLEncoder.encode("user_id", "UTF-8") + "=" + URLEncoder.encode(myid, "UTF-8")
                         + "&&" + URLEncoder.encode("group_id", "UTF-8") + "=" + URLEncoder.encode(myGroup, "UTF-8");
-            }*/else if(type.equals("ministryMembers")){
+            }else if(type.equals("ministryMembers")){
                 url=new URL(ttucu);
                 int group_id=Integer.parseInt(strings[1]);
                 insert_data = URLEncoder.encode("operation", "UTF-8") + "=" + URLEncoder.encode("ministryMembers", "UTF-8")
@@ -209,7 +210,7 @@ public class HttpProcesses {
             }else if(type.equals("connection")) {
                 url = new URL(ttucu);
                 insert_data = URLEncoder.encode("operation", "UTF-8") + "=" + URLEncoder.encode("connection", "UTF-8");
-            }
+            }*/
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.setRequestMethod("POST");
             httpURLConnection.setDoOutput(true);

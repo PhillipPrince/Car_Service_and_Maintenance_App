@@ -23,16 +23,16 @@
             android:layout_height="wrap_content"
             android:background="#DFB7C8"
             ></ListView>
-        <TextView
+        <Button
             android:id="@+id/mechanicMode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Switch to Mechanic Mode"
+            android:text="Add Mechanic"
             android:onClick="mechanicMode"
             android:layout_gravity="right"
             android:padding="10dp"
             android:textColor="@color/purple_700"
-            ></TextView>
+            ></Button>
     </LinearLayout>
 
 

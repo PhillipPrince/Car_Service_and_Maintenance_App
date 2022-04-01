@@ -80,7 +80,6 @@ import org.json.JSONObject;
                             Boolean insert=db.insertData(name,mail, pass);
                             if(insert==true){
                                 register(name, phone, mail, pass);
-
                                 startActivity(intent);
                             }else{
                                 Toast.makeText(getApplicationContext(), "Registration Failed. Try again", Toast.LENGTH_SHORT).show();

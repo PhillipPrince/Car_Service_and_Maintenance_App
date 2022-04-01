@@ -2,6 +2,7 @@ package com.example.carservice;
 
 public class AvailableCars {
     int carId;
+    int mileage;
     String carModel;
     String fuel;
     String modelYear;
@@ -10,6 +11,23 @@ public class AvailableCars {
     String engineNo;
     String numberPlate;
     String lastInsurance;
+    String nextInsurance;
+
+    public int getMileage() {
+        return mileage;
+    }
+
+    public void setMileage(int mileage) {
+        this.mileage = mileage;
+    }
+
+    public String getNextInsurance() {
+        return nextInsurance;
+    }
+
+    public void setNextInsurance(String nextInsurance) {
+        this.nextInsurance = nextInsurance;
+    }
 
     public int getCarId() {
         return carId;

@@ -13,7 +13,7 @@ import java.util.List;
 
 public class DataBaseHelper  extends SQLiteOpenHelper {
     public static String DBName="CarUsers.db";
-    public static int DBVersion=10;
+    public static int DBVersion=11;
     public static String tableName="user";
     public static String tableCar="tableCar";
     private static String tableMileage="mileage";
@@ -40,8 +40,11 @@ public class DataBaseHelper  extends SQLiteOpenHelper {
                 "engine VARCHAR ," +
                 "chasisNo VARCHAR, " +
                 "engineNumber VARCHAR ," +
-                "numberPlate VARCHAR, " +
-                "lastInsurance DATE)");
+                "numberPlate VARCHAR," +
+                " mileage VARCHAR," +
+                "lastInsurance DATE," +
+                "nextInsurance DATE)"
+        );
 
         String mechanics="CREATE TABLE "+ tableMechanics+"(id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "mechName VARCHAR," +
@@ -72,6 +75,18 @@ public class DataBaseHelper  extends SQLiteOpenHelper {
         }else{
             return true;
         }
+    }
+    public  Boolean addMechanic(String name, int phone, String location ){
+
+        ContentValues contentValues=new ContentValues();
+        contentValues.put("name", name);
+        contentValues.put("location", location);
+        contentValues.put("phone",phone);
+        Long res=db.insert(tableMechanics, null, contentValues);
+        if(res>0){
+            return true;
+        }
+        return false;
     }
 
     public Boolean checkUser(String username){
@@ -117,12 +132,12 @@ public class DataBaseHelper  extends SQLiteOpenHelper {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        cursor.close();
+
         db.close();
         return cursor;
     }
     public Boolean saveCar( String carModel , String fuel, int modelYear  ,
-            String engine  , String chasisNo , String engineNumber  , String numberPlate ,  String lastInsurance ){
+            String engine  , String chasisNo , String engineNumber  , String numberPlate, int mileage ,  String lastInsurance, String nextInsurance ){
 
         ContentValues contentValues=new ContentValues();
 
@@ -133,7 +148,9 @@ public class DataBaseHelper  extends SQLiteOpenHelper {
         contentValues.put("chasisNo", chasisNo);
         contentValues.put("engineNumber", engineNumber);
         contentValues.put("numberPlate", numberPlate);
+        contentValues.put("mileage", mileage);
         contentValues.put("lastInsurance", String.valueOf(lastInsurance));
+        contentValues.put("nextInsurance", nextInsurance);
 
         long result=db.insert(tableCar, null, contentValues);
         if(result>0){
@@ -142,6 +159,7 @@ public class DataBaseHelper  extends SQLiteOpenHelper {
         return false;
     }
      public  List<AvailableCars> myCars(){
+
 
          String sql="SELECT * FROM "+tableCar;
 
@@ -160,10 +178,11 @@ public class DataBaseHelper  extends SQLiteOpenHelper {
                  avCars.setChassisNo(cursor.getString(5));
                  avCars.setEngineNo(cursor.getString(6));
                  avCars.setNumberPlate(cursor.getString(7));
-                 avCars.setLastInsurance(cursor.getString(8));
+                 avCars.setMileage(cursor.getInt(8));
+                 avCars.setLastInsurance(cursor.getString(9));
+                 avCars.setNextInsurance(cursor.getString(10));
                  availableCars.add(avCars);
              }
-
          } catch (Exception e) {
              e.printStackTrace();
          }
@@ -187,7 +206,9 @@ public class DataBaseHelper  extends SQLiteOpenHelper {
         }
     }
 
-     public List<myMechanics> myMechs(){
+
+
+     /*public List<myMechanics> myMechs(){
         String sql="SELECT *FROM " +tableMechanics;
         Cursor cursor=null;
         List<myMechanics> mechanics=new ArrayList<>();
@@ -202,7 +223,7 @@ public class DataBaseHelper  extends SQLiteOpenHelper {
             mechanics.add(mechs);
         }
         return mechanics;
-     }
+     }*/
 
 
 

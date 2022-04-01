@@ -146,19 +146,19 @@ public class car extends AppCompatActivity implements  DatePickerDialog.OnDateSe
         String engNo=engineNumber.getText().toString();
         String nplate=numberPlate.getText().toString();
         String lins=lastInsurance.getText().toString();
-        String mile=mileage.getText().toString();
+        int mile= Integer.parseInt(mileage.getText().toString());
         String ninsurance=nextInsurance.getText().toString();
-        String nservice=nextService.getText().toString();
+       // String nservice=nextService.getText().toString();
 
 
         if(cm.equals("")){
             Toast.makeText(getApplicationContext(), "Enter car Name", Toast.LENGTH_SHORT).show();
         }
         try {
-            Boolean insCar=db.saveCar(cm, f, Integer.parseInt(my),eng, chas, engNo, nplate, lins);
+            Boolean insCar=db.saveCar(cm, f, Integer.parseInt(my),eng, chas, engNo, nplate, mile, lins, ninsurance);
             if(insCar==true){
                 Toast.makeText(getApplicationContext(), "Saved", Toast.LENGTH_SHORT).show();
-                newCar(cm,nplate, mile, nservice, ninsurance );
+                //newCar(cm,nplate, mile, nservice, ninsurance );
                 startActivity(new Intent(getApplicationContext(), car.class));
             }  else {
                 Toast.makeText(getApplicationContext(), "Failed. Try again", Toast.LENGTH_SHORT).show();
