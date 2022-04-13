@@ -7,18 +7,14 @@
         android:title="Home"
             android:icon="@drawable/ic_home_black_24dp"
             ></item>
-        <item
-                android:id="@+id/Addcar"
-                android:title="Add Car"></item>
+
 
         <item
                 android:id="@+id/mechanic"
                 android:title="Mechanic"
         ></item>
 
-        <item
-                android:id="@+id/carExpenses"
-                android:title="Car Expenses"></item>
+
         <item
                 android:id="@+id/notification"
                 android:title="Notifications"

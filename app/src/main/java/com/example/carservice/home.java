@@ -60,6 +60,12 @@ public class home extends AppCompatActivity implements NavigationView.OnNavigati
             }
         });
 
+        expenses.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), CarExpenses.class));
+            }
+        });
 
     }
 
@@ -85,9 +91,6 @@ public class home extends AppCompatActivity implements NavigationView.OnNavigati
             startActivity(intent);
         } else if (item.getItemId()==R.id.mechanic){
             startActivity(new Intent(getApplicationContext(), mechanic.class));
-        }else if (item.getItemId()==R.id.carExpenses){
-            setContentView(R.layout.carexpenses);
-
         }else if (item.getItemId()==R.id.notification){
         }else  if (item.getItemId()==R.id.profile){
             setContentView(R.layout.profile);

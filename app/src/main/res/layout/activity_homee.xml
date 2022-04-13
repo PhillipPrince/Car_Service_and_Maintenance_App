@@ -42,6 +42,28 @@
                 android:src="@drawable/car"
                 android:layout_gravity="center"
                 ></ImageView>
+            <LinearLayout
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shapes"
+                android:backgroundTint="@color/maroon"
+                android:orientation="vertical"
+                android:layout_gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:layout_gravity="center"
+                    android:text="Mileage"></TextView>
+                <TextView
+                    android:id="@+id/myMileage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:layout_gravity="center"
+                    android:hint="0000"></TextView>
+            </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"

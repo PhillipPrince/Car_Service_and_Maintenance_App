@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class DataBaseHelper  extends SQLiteOpenHelper {
@@ -16,7 +17,8 @@ public class DataBaseHelper  extends SQLiteOpenHelper {
     public static int DBVersion=11;
     public static String tableName="user";
     public static String tableCar="tableCar";
-    private static String tableMileage="mileage";
+    private static String service="tableService";
+    private static String expenses="tableExpenses";
     public static  String tableMechanics="Mechanics";
     //SQLiteDatabase sQLiteDatabase=this.getWritableDatabase();
     SQLiteDatabase db=this.getWritableDatabase();
@@ -31,6 +33,8 @@ public class DataBaseHelper  extends SQLiteOpenHelper {
         String sql="create table "+tableName+" (Id INTEGER primary key AUTOINCREMENT, username TEXT , " +
                 "email TEXT, " +
                 "password TEXT)";
+        String expSql="CREATE TABLE "+expenses+"(id INTEGER PRIMARY KEY AUTOINCREMENT, expenseName VARCHAR, amount INTEGER, expDate DATE)";
+        db.execSQL(expSql);
 
         db.execSQL(sql);
         db.execSQL("create table "+ tableCar+" (id INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -75,6 +79,17 @@ public class DataBaseHelper  extends SQLiteOpenHelper {
         }else{
             return true;
         }
+    }
+    public Boolean insertExpense(String expName, int amount, String expDate){
+        ContentValues contentValues=new ContentValues();
+        contentValues.put("name", expName);
+        contentValues.put("amount", amount);
+        contentValues.put("date", expDate);
+        Long result=db.insert(expenses, null, contentValues);
+        if(result>0){
+            return true;
+        }
+        return false;
     }
     public  Boolean addMechanic(String name, int phone, String location ){
 

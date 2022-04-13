@@ -37,6 +37,7 @@ public class car extends AppCompatActivity implements  DatePickerDialog.OnDateSe
     ListView carList;
     DataBaseHelper db;
     TextView linsurance, nInsurance;
+    String dateselected=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +54,7 @@ public class car extends AppCompatActivity implements  DatePickerDialog.OnDateSe
             }
         });
 
-        carsList();
+       // carsList();
     }
 
     public void addCar(){
@@ -82,6 +83,14 @@ public class car extends AppCompatActivity implements  DatePickerDialog.OnDateSe
         linsurance.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                dateselected="linsurance";
+                datePicker();
+            }
+        });
+        nInsurance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dateselected="nInsurance";
                 datePicker();
             }
         });
@@ -127,11 +136,11 @@ public class car extends AppCompatActivity implements  DatePickerDialog.OnDateSe
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
         String date=year+"/"+month+"/"+dayOfMonth;
 
-        String dateselected=null;
-        String lastDate=linsurance.getText().toString();
-        if (dateselected.equals(lastDate)) {
+
+
+        if (dateselected.equals("linsurance")) {
             lastInsurance.setText(date);
-        }else if(dateselected.equals(nInsurance.getText().toString())){
+        }else if(dateselected.equals("nInsurance")){
            nextInsurance.setText(date);
         }
 
