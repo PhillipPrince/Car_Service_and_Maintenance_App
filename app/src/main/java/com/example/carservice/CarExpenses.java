@@ -51,18 +51,20 @@ public  class CarExpenses extends AppCompatActivity implements DatePickerDialog.
             @Override
             public void onClick(View v) {
                 String name=expenseName.getText().toString();
-                int expAmount= Integer.parseInt(expenseAmount.getText().toString());
+                String expAmount= expenseAmount.getText().toString();
                 String expDate=expenseDate.getText().toString();
-                if(name.equals("")||Integer.valueOf(expAmount).equals("")||expDate.equals("")){
+                if(name.equals("")||expAmount.equals("")||expDate.equals("")){
                     Toast.makeText(getApplicationContext(), "Record Expense", Toast.LENGTH_SHORT).show();
+                }else{
+                    Boolean insertexpense=db.insertExpense(name,expAmount, expDate);
+                    if (insertexpense==true){
+                        Toast.makeText(getApplicationContext(),"Expense Added", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(getApplicationContext(), CarExpenses.class));
+                    }else {
+                        Toast.makeText(getApplicationContext(),"Retry", Toast.LENGTH_SHORT).show();
+                    }
                 }
-                Boolean insertexpense=db.insertExpense(name,expAmount, expDate);
-                if (insertexpense==true){
-                    Toast.makeText(getApplicationContext(),"Expense Added", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(getApplicationContext(), CarExpenses.class));
-                }else {
-                    Toast.makeText(getApplicationContext(),"Retry", Toast.LENGTH_SHORT).show();
-                }
+
 
 
             }

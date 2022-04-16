@@ -14,7 +14,7 @@ import java.util.List;
 
 public class DataBaseHelper  extends SQLiteOpenHelper {
     public static String DBName="CarUsers.db";
-    public static int DBVersion=11;
+    public static int DBVersion=15;
     public static String tableName="user";
     public static String tableCar="tableCar";
     private static String service="tableService";
@@ -33,6 +33,7 @@ public class DataBaseHelper  extends SQLiteOpenHelper {
         String sql="create table "+tableName+" (Id INTEGER primary key AUTOINCREMENT, username TEXT , " +
                 "email TEXT, " +
                 "password TEXT)";
+
         String expSql="CREATE TABLE "+expenses+"(id INTEGER PRIMARY KEY AUTOINCREMENT, expenseName VARCHAR, amount INTEGER, expDate DATE)";
         db.execSQL(expSql);
 
@@ -45,7 +46,7 @@ public class DataBaseHelper  extends SQLiteOpenHelper {
                 "chasisNo VARCHAR, " +
                 "engineNumber VARCHAR ," +
                 "numberPlate VARCHAR," +
-                " mileage VARCHAR," +
+                "mileage VARCHAR," +
                 "lastInsurance DATE," +
                 "nextInsurance DATE)"
         );
@@ -64,6 +65,7 @@ public class DataBaseHelper  extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS "+ tableName);
         db.execSQL("DROP TABLE IF EXISTS "+ tableCar);
         db.execSQL("DROP TABLE IF EXISTS "+ tableMechanics);
+        db.execSQL("DROP TABLE IF EXISTS "+ expenses);
         onCreate(db);
     }
 
@@ -80,11 +82,11 @@ public class DataBaseHelper  extends SQLiteOpenHelper {
             return true;
         }
     }
-    public Boolean insertExpense(String expName, int amount, String expDate){
+    public Boolean insertExpense(String expName, String amount, String expDate){
         ContentValues contentValues=new ContentValues();
-        contentValues.put("name", expName);
+        contentValues.put("expenseName", expName);
         contentValues.put("amount", amount);
-        contentValues.put("date", expDate);
+        contentValues.put("expDate", expDate);
         Long result=db.insert(expenses, null, contentValues);
         if(result>0){
             return true;
@@ -94,9 +96,9 @@ public class DataBaseHelper  extends SQLiteOpenHelper {
     public  Boolean addMechanic(String name, int phone, String location ){
 
         ContentValues contentValues=new ContentValues();
-        contentValues.put("name", name);
-        contentValues.put("location", location);
-        contentValues.put("phone",phone);
+        contentValues.put("mechName", name);
+        contentValues.put("mechLocation", location);
+        contentValues.put("mechPhone",phone);
         Long res=db.insert(tableMechanics, null, contentValues);
         if(res>0){
             return true;
@@ -182,8 +184,9 @@ public class DataBaseHelper  extends SQLiteOpenHelper {
          List<AvailableCars> availableCars=new ArrayList<>();
          try {
              cursor= db.rawQuery(sql, null);
-             cursor.moveToFirst();
-             while(cursor.moveToNext()){
+            if(cursor.moveToFirst()){
+
+             do{
                  AvailableCars avCars=new AvailableCars();
                  avCars.setCarId(cursor.getInt(0));
                  avCars.setCarModel(cursor.getString(1));
@@ -198,6 +201,8 @@ public class DataBaseHelper  extends SQLiteOpenHelper {
                  avCars.setNextInsurance(cursor.getString(10));
                  availableCars.add(avCars);
              }
+             while(cursor.moveToNext());
+            }
          } catch (Exception e) {
              e.printStackTrace();
          }
@@ -223,13 +228,12 @@ public class DataBaseHelper  extends SQLiteOpenHelper {
 
 
 
-     /*public List<myMechanics> myMechs(){
+     public List<myMechanics> myMechs(){
         String sql="SELECT *FROM " +tableMechanics;
         Cursor cursor=null;
         List<myMechanics> mechanics=new ArrayList<>();
         cursor= db.rawQuery(sql, null);
-        cursor.moveToFirst();
-        while (cursor.moveToNext()){
+        if(cursor.moveToFirst()){
             myMechanics mechs=new myMechanics();
             mechs.setId(cursor.getInt(0));
             mechs.setMechName(cursor.getString(1));
@@ -237,8 +241,9 @@ public class DataBaseHelper  extends SQLiteOpenHelper {
             mechs.setMechLocation(cursor.getString(3));
             mechanics.add(mechs);
         }
+        while (cursor.moveToNext());
         return mechanics;
-     }*/
+     }
 
 
 

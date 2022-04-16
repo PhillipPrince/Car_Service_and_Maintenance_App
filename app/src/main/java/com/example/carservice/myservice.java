@@ -30,7 +30,6 @@ public class myservice extends AppCompatActivity {
             viewPager2.setAdapter(adapter);
 
             tabLayout.addTab(tabLayout.newTab().setText("Select Car"));
-            tabLayout.addTab(tabLayout.newTab().setText("Mini-Service"));
             tabLayout.addTab(tabLayout.newTab().setText("Full Service"));
             tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
                 @Override

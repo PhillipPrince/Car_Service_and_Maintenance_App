@@ -27,15 +27,33 @@ public class mechanic extends AppCompatActivity {
     EditText mechname, mechPhone, mechLocation;
     DataBaseHelper db;
     ImageView saveMech;
+    ListView mechList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mechanic);
         mechanicMode=findViewById(R.id.mechanicMode);
         saveMech=findViewById(R.id.saveMechanic);
+        mechList=findViewById(R.id.mechanicsList);
         db=new DataBaseHelper(getApplicationContext());
 
+        mechanics();
+
+
     }
+
+    private void mechanics() {
+        final List<myMechanics> list=db.myMechs();
+        final ArrayList<String> arrayList=new ArrayList();
+
+        for(int i=0; i<list.size(); i++){
+            arrayList.add(list.get(i).getMechName()+"   "+list.get(i).getMechPhone());
+
+        }
+        ArrayAdapter arrayAdapter=new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, arrayList);
+        mechList.setAdapter(arrayAdapter);
+    }
+
     public void mechanicMode(View view) {
         setContentView(R.layout.activity_add_mechanic);
         mechname=findViewById(R.id.mechName);
@@ -56,7 +74,7 @@ public class mechanic extends AppCompatActivity {
         }else {
             Boolean saveMechanic=db.addMechanic(nam, phon, loc);
             if(saveMechanic==true){
-                Toast.makeText(getApplicationContext(), "SAved", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Saved", Toast.LENGTH_SHORT).show();
             }else{
                 Toast.makeText(getApplicationContext(), "Retry", Toast.LENGTH_LONG).show();
             }

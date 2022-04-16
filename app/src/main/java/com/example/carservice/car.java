@@ -54,7 +54,7 @@ public class car extends AppCompatActivity implements  DatePickerDialog.OnDateSe
             }
         });
 
-       // carsList();
+        carsList();
     }
 
     public void addCar(){

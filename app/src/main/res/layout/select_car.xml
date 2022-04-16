@@ -16,6 +16,28 @@
             android:background="@drawable/dashboad"
             ></ImageView>
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:id="@+id/serviceDate"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:hint="dd/mm/yyyy"
+                android:inputType="date"></TextView>
+
+            <ImageView
+                android:id="@+id/sdate"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/calendaricon"
+                ></ImageView>
+        </LinearLayout>
+
        <Spinner
            android:id="@+id/select_car"
            android:layout_width="350dp"

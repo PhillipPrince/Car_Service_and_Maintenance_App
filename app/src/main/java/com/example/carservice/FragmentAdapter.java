@@ -20,8 +20,6 @@ public class FragmentAdapter extends FragmentStateAdapter {
             case 0:
                 return new SelectCar();
             case 1:
-                return new operation();
-            case 2:
                 return new full_service();
 
         }

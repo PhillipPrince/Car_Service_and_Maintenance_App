@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         error=findViewById(R.id.error);
 
 
-        db.syncDetails();
+       // db.syncDetails();
        startActivity(new Intent(MainActivity.this, home.class));
 
       /*  Cursor cursor= db.syncDetails();

@@ -6,6 +6,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -16,13 +17,16 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
 
+import java.util.List;
+
 public class home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
     DataBaseHelper db;
-    LinearLayout carService, myCars,  expenses;;
+    LinearLayout carService, myCars,  expenses;
+    TextView myMileage;
 
 
     @Override
@@ -34,6 +38,7 @@ public class home extends AppCompatActivity implements NavigationView.OnNavigati
         drawerLayout=findViewById(R.id.drawer);
         toolbar=findViewById(R.id.toolbar);
         myCars=findViewById(R.id.myCar);
+        myMileage=findViewById(R.id.myMileage);
 
         expenses=findViewById(R.id.expenses);
 
@@ -67,7 +72,12 @@ public class home extends AppCompatActivity implements NavigationView.OnNavigati
             }
         });
 
+        final List<AvailableCars> list=db.myCars();
+
+
+
     }
+
 
     @Override
     public void onBackPressed() {
