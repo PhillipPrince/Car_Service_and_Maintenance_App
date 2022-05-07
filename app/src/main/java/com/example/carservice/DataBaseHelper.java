@@ -14,10 +14,10 @@ import java.util.List;
 
 public class DataBaseHelper  extends SQLiteOpenHelper {
     public static String DBName="CarUsers.db";
-    public static int DBVersion=15;
+    public static int DBVersion=16;
     public static String tableName="user";
     public static String tableCar="tableCar";
-    private static String service="tableService";
+    private static String tableFluids="fluidsService";
     private static String expenses="tableExpenses";
     public static  String tableMechanics="Mechanics";
     //SQLiteDatabase sQLiteDatabase=this.getWritableDatabase();
@@ -32,6 +32,7 @@ public class DataBaseHelper  extends SQLiteOpenHelper {
 
         String sql="create table "+tableName+" (Id INTEGER primary key AUTOINCREMENT, username TEXT , " +
                 "email TEXT, " +
+                "phone VARCHAR, " +
                 "password TEXT)";
 
         String expSql="CREATE TABLE "+expenses+"(id INTEGER PRIMARY KEY AUTOINCREMENT, expenseName VARCHAR, amount INTEGER, expDate DATE)";
@@ -56,6 +57,9 @@ public class DataBaseHelper  extends SQLiteOpenHelper {
                 "mechLocation VARCHAR, " +
                 "mechPhone INTEEGER)";
         db.execSQL(mechanics);
+        String tableService="CREATE TABLE "+ tableFluids +"(id INTEGER, numberPlate VARCHAR, serviceDate VARCHAR, item1 VARCHAR, item2 VARCHAR, item3 VARCHAR, " +
+                "item4 VARCHAR, item5 VARCHAR, item6 VARCHAR, item7 VARCHAR, item8 VARCHAR, item9 VARCHAR)";
+       //db.execSQL(tableService);
 
     }
 
@@ -69,11 +73,12 @@ public class DataBaseHelper  extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public Boolean insertData(String username, String email, String password){
+    public Boolean insertData(String username, String email, String phone, String password){
 
         ContentValues cv=new ContentValues();
         cv.put( "username", username);
         cv.put("email",email);
+        cv.put("phone", phone);
         cv.put("password", password);
         long result=db.insert(tableName, null, cv);
         if(result==-1){
@@ -108,7 +113,7 @@ public class DataBaseHelper  extends SQLiteOpenHelper {
 
     public Boolean checkUser(String username){
 
-        Cursor cursor=db.rawQuery("select * from "+ tableName+" where username=?",  new String[]{username});
+        Cursor cursor=db.rawQuery("select * from "+ tableName +" where username=?",  new String[]{username});
         if(cursor.getCount()>0){
             return  true;
         }else {
@@ -119,7 +124,7 @@ public class DataBaseHelper  extends SQLiteOpenHelper {
     public Boolean checkMail(String email){
 
         String sql="select * from users where username=?";
-        Cursor cursor=db.rawQuery("select * from "+tableName+" where email=?",  new String[]{email});
+        Cursor cursor=db.rawQuery("select * from "+ tableName +" where email=?",  new String[]{email});
         if(cursor.getCount()>0){
             return  true;
         }else {
@@ -128,7 +133,7 @@ public class DataBaseHelper  extends SQLiteOpenHelper {
     }
     public Boolean checkPassword(String pass){
 
-        Cursor cursor=db.rawQuery("select *from "+ tableName+" where password=?", new String[]{pass});
+        Cursor cursor=db.rawQuery("select *from "+ tableName +" where password=?", new String[]{pass});
         if(cursor.getCount()>0){
             return true;
         }else {

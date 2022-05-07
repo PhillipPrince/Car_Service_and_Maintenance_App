@@ -22,4 +22,25 @@ public enum UserDetails {
     public void setUserId(int userId) {
         this.userId = userId;
     }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    String phone;
+
+    public int getMechanicStatus() {
+        return mechanicStatus;
+    }
+
+    public void setMechanicStatus(int mechanicStatus) {
+        this.mechanicStatus = mechanicStatus;
+    }
+
+    int mechanicStatus;
+
 }

@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="10dp"
     android:gravity="center">
 
     <ScrollView
@@ -43,81 +44,188 @@
 
             <CheckBox
                 android:id="@+id/oil"
-                android:layout_width="wrap_content"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/ll"
                 android:text="Oil"></CheckBox>
 
+            <EditText
+                android:id="@+id/oilAmount"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ll"
+                android:layout_marginLeft="85dp"
+                android:layout_toRightOf="@+id/oil"
+                android:hint="Amount"
+                android:inputType="number"
+                android:padding="10dp"></EditText>
+
             <CheckBox
                 android:id="@+id/ant_freeze"
-                android:layout_width="match_parent"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/oil"
                 android:text="Ant freeze"
-                tools:ignore="MissingConstraints,RtlCompat"></CheckBox>
+                ></CheckBox>
+
+            <EditText
+                android:id="@+id/ant_freezeAmount"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/oilAmount"
+                android:layout_marginLeft="85dp"
+                android:layout_toRightOf="@+id/ant_freeze"
+                android:hint="Amount"
+                android:inputType="number"
+                android:padding="10dp"></EditText>
 
             <CheckBox
                 android:id="@+id/freon"
-                android:layout_width="match_parent"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/ant_freeze"
                 android:text="Freon"
                 tools:ignore="MissingConstraints,RtlCompat"></CheckBox>
 
+            <EditText
+                android:id="@+id/freon_Amount"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ant_freezeAmount"
+                android:layout_marginLeft="85dp"
+                android:layout_toRightOf="@+id/freon"
+                android:hint="Amount"
+                android:inputType="number"
+                android:padding="10dp"></EditText>
+
             <CheckBox
                 android:id="@+id/transmission_oil"
-                android:layout_width="match_parent"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/freon"
                 android:text="Transmission Oil"
                 tools:ignore="MissingConstraints,RtlCompat"></CheckBox>
 
+            <EditText
+                android:id="@+id/transmission_oil_Amount"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/freon_Amount"
+                android:layout_marginLeft="85dp"
+                android:layout_toRightOf="@+id/transmission_oil"
+                android:hint="Amount"
+                android:inputType="number"
+                android:padding="10dp"></EditText>
+
             <CheckBox
                 android:id="@+id/front_differential_oil"
-                android:layout_width="match_parent"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/transmission_oil"
                 android:text="Front Differential Oil"
                 tools:ignore="MissingConstraints,RtlCompat"></CheckBox>
 
+            <EditText
+                android:id="@+id/front_differential_oilAmount"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/transmission_oil_Amount"
+                android:layout_marginLeft="85dp"
+                android:layout_toRightOf="@+id/front_differential_oil"
+                android:hint="Amount"
+                android:inputType="number"
+                android:padding="10dp"></EditText>
+
             <CheckBox
                 android:id="@+id/rear_differential_oil"
-                android:layout_width="match_parent"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/front_differential_oil"
                 android:text="Rear Differential Fluid"
                 tools:ignore="MissingConstraints,RtlCompat"></CheckBox>
 
+            <EditText
+                android:id="@+id/rear_differential_oilAmount"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/front_differential_oil"
+                android:layout_marginLeft="85dp"
+                android:layout_toRightOf="@+id/rear_differential_oil"
+                android:hint="Amount"
+                android:inputType="number"
+                android:padding="10dp"></EditText>
+
             <CheckBox
                 android:id="@+id/brake_fluid"
-                android:layout_width="match_parent"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/rear_differential_oil"
                 android:text="Brake Fluid"
                 tools:ignore="MissingConstraints,RtlCompat"></CheckBox>
 
+            <EditText
+                android:id="@+id/brake_fluidAmount"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rear_differential_oilAmount"
+                android:layout_marginLeft="85dp"
+                android:layout_toRightOf="@+id/brake_fluid"
+                android:hint="Amount"
+                android:inputType="number"
+                android:padding="10dp"></EditText>
+
             <CheckBox
                 android:id="@+id/steering_fluid"
-                android:layout_width="match_parent"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/brake_fluid"
                 android:text="Steering Fluid"
                 tools:ignore="MissingConstraints,RtlCompat"></CheckBox>
 
+            <EditText
+                android:id="@+id/steering_fluidAmount"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/brake_fluidAmount"
+                android:layout_marginLeft="85dp"
+                android:layout_toRightOf="@+id/steering_fluid"
+                android:hint="Amount"
+                android:inputType="number"
+                android:padding="10dp"></EditText>
+
             <CheckBox
                 android:id="@+id/lube_suspension"
-                android:layout_width="match_parent"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/steering_fluid"
                 android:text="Lube Suspension"
                 tools:ignore="MissingConstraints,RtlCompat"></CheckBox>
+
+            <EditText
+                android:id="@+id/lube_suspensionAmount"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/steering_fluidAmount"
+                android:layout_marginLeft="85dp"
+                android:layout_toRightOf="@+id/lube_suspension"
+                android:hint="Amount"
+                android:inputType="number"
+                android:padding="10dp"></EditText>
+
+            <TextView
+                android:id="@+id/saveFluidsService"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lube_suspension"
+                android:textColor="#022CF4"
+                android:text="Save"></TextView>
 
             <LinearLayout
                 android:id="@+id/mm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_below="@+id/lube_suspension"
+                android:layout_below="@+id/saveFluidsService"
                 >
 
                 <ImageView
@@ -140,62 +248,126 @@
 
             <CheckBox
                 android:id="@+id/fuel_filter"
-                android:layout_width="wrap_content"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/mm"
                 android:text="Change Fuel Filter"></CheckBox>
 
+            <EditText
+                android:id="@+id/fuel_filter_Amount"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/mm"
+                android:layout_marginLeft="85dp"
+                android:layout_toRightOf="@+id/fuel_filter"
+                android:hint="Amount"
+                android:inputType="number"
+                android:padding="10dp"></EditText>
+
             <CheckBox
                 android:id="@+id/oil_filter"
-                android:layout_width="match_parent"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/fuel_filter"
                 android:text="Change Oil Filter"
                 ></CheckBox>
-
+            <EditText
+                android:id="@+id/oil_filterAmount"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/fuel_filter_Amount"
+                android:layout_marginLeft="85dp"
+                android:layout_toRightOf="@+id/oil_filter"
+                android:hint="Amount"
+                android:inputType="number"
+                android:padding="10dp"></EditText>
             <CheckBox
                 android:id="@+id/spark_plug"
-                android:layout_width="match_parent"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/oil_filter"
                 android:text="Change Spark Plug"
                ></CheckBox>
 
+            <EditText
+                android:id="@+id/spark_plugAmount"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/oil_filterAmount"
+                android:layout_marginLeft="85dp"
+                android:layout_toRightOf="@+id/spark_plug"
+                android:hint="Amount"
+                android:inputType="number"
+                android:padding="10dp"></EditText>
+
             <CheckBox
                 android:id="@+id/timing_belt_kit"
-                android:layout_width="match_parent"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/spark_plug"
                 android:text="Change Timing Belt Kit"
                 ></CheckBox>
 
+            <EditText
+                android:id="@+id/timing_belt_kitAmount"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/spark_plugAmount"
+                android:layout_marginLeft="85dp"
+                android:layout_toRightOf="@+id/timing_belt_kit"
+                android:hint="Amount"
+                android:inputType="number"
+                android:padding="10dp"></EditText>
+
             <CheckBox
                 android:id="@+id/head_gasket"
-                android:layout_width="match_parent"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/timing_belt_kit"
                 android:text="Change head gasket"
                 ></CheckBox>
 
+            <EditText
+                android:id="@+id/head_gasket_Amount"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/timing_belt_kitAmount"
+                android:layout_marginLeft="85dp"
+                android:layout_toRightOf="@+id/head_gasket"
+                android:hint="Amount"
+                android:inputType="number"
+                android:padding="10dp"></EditText>
+
             <CheckBox
                 android:id="@+id/air_filter"
-                android:layout_width="match_parent"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/head_gasket"
                 android:text="Change air filter"
                 ></CheckBox>
+            <EditText
+                android:id="@+id/air_filter_Amount"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/head_gasket_Amount"
+                android:layout_marginLeft="85dp"
+                android:layout_toRightOf="@+id/air_filter"
+                android:hint="Amount"
+                android:inputType="number"
+                android:padding="10dp"></EditText>
 
             <CheckBox
                 android:id="@+id/clutch_kit"
-                android:layout_width="match_parent"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/air_filter"
                 android:text="Change clutch kit"
                 tools:ignore="MissingConstraints,RtlCompat"></CheckBox>
 
+
             <CheckBox
                 android:id="@+id/master_cylinder"
-                android:layout_width="match_parent"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/clutch_kit"
                 android:text="Change master cylinder"
@@ -203,7 +375,7 @@
 
             <CheckBox
                 android:id="@+id/camshaft_variator"
-                android:layout_width="match_parent"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/master_cylinder"
                 android:text="Change camshaft variator"
@@ -211,7 +383,7 @@
 
             <CheckBox
                 android:id="@+id/front_brake_disk"
-                android:layout_width="match_parent"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/camshaft_variator"
                 android:text="Change front brake disk"
@@ -219,7 +391,7 @@
 
             <CheckBox
             android:id="@+id/front_brake_pads"
-            android:layout_width="match_parent"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/front_brake_disk"
             android:text="Change front brake pads"
@@ -227,7 +399,7 @@
 
             <CheckBox
             android:id="@+id/front_brake_hoses"
-            android:layout_width="match_parent"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/front_brake_pads"
             android:text="Change front brake hoses"
@@ -235,19 +407,23 @@
 
             <CheckBox
             android:id="@+id/rear_brake_discs"
-            android:layout_width="match_parent"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/front_brake_hoses"
             android:text="Change rear brake discs"
-            ></CheckBox><CheckBox
+            ></CheckBox>
+
+            <CheckBox
             android:id="@+id/rear_brake_pads"
-            android:layout_width="match_parent"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/rear_brake_discs"
             android:text="Change camshaft variator"
-            ></CheckBox><CheckBox
+            ></CheckBox
+
+                ><CheckBox
             android:id="@+id/rear_brake_hoses"
-            android:layout_width="match_parent"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/rear_brake_pads"
             android:text="Change rear brake hoses"

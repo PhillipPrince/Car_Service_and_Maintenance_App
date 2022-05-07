@@ -61,26 +61,14 @@ import org.json.JSONObject;
 
             try {
                 if(pass.equals(repass)){
-                    Intent intent=new Intent(getApplicationContext(), home.class);
-                    //startActivity(intent);
-
-                    Boolean ins=db.insertData(name, mail,pass);
-
-                    if(ins==true){
-                     //   Toast.makeText(getApplicationContext(), "Registration successful", Toast.LENGTH_SHORT).show();
-                        // Intent intent=new Intent(getApplicationContext(), home.class);
-                        startActivity(intent);
-                    }else{
-                        Toast.makeText(getApplicationContext(), "Registration Failed. Try again", Toast.LENGTH_SHORT).show();
-                    }
                     Boolean checkUser=db.checkUser(name);
                     if(checkUser==false){
                         Boolean checkMail=db.checkMail(mail);
                         if(checkMail==false){
-                            Boolean insert=db.insertData(name,mail, pass);
+                            Boolean insert=db.insertData(name,mail,phone, pass);
                             if(insert==true){
-                                register(name, phone, mail, pass);
-                                startActivity(intent);
+                               // register(name, phone, mail, pass);
+                                startActivity(new Intent(getApplicationContext(), MainActivity.class));
                             }else{
                                 Toast.makeText(getApplicationContext(), "Registration Failed. Try again", Toast.LENGTH_SHORT).show();
                             }
@@ -90,13 +78,9 @@ import org.json.JSONObject;
                     }else{
                         Toast.makeText(getApplicationContext(), "Username already exists", Toast.LENGTH_SHORT).show();
                     }
-
-                    // Intent intent=new Intent(getApplicationContext(), home.class);
-                    startActivity(intent);
                 }else{
                     Toast.makeText(getApplicationContext(), "Password did not Match", Toast.LENGTH_SHORT).show();
                 }
-
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -109,8 +93,6 @@ import org.json.JSONObject;
     public void register(String name, String phone, String email, String password){
 
         final String type = "reg";
-
-
         //noinspection deprecation
         new android.os.AsyncTask<Void, Void, String>() {
                 protected String doInBackground(Void[] params) {
@@ -132,26 +114,18 @@ import org.json.JSONObject;
                     return response;
                 }
                 protected void onPostExecute(String response) {
-
                     try {
                         JSONObject jsonObject = new JSONObject(response);
                         Boolean result = jsonObject.getBoolean("status");
-                        //  JSONArray      jsonArray = jsonObject.optJSONArray("data");
                         String message = jsonObject.getString("message");
                         if (result == true) {
-                            // String names=jsonArray.getString(jsonObject.getInt("name "));
-
+                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
                             Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
-
                         } else {
                             Toast.makeText(getApplicationContext(),message , Toast.LENGTH_SHORT).show();
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
-
-
-
-
                     }
                 }
             }.execute();

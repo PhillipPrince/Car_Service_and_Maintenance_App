@@ -13,6 +13,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class MainActivity extends AppCompatActivity {
     EditText userName, password;
     Button login;
@@ -35,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
 
        // db.syncDetails();
-       startActivity(new Intent(MainActivity.this, home.class));
+       //startActivity(new Intent(MainActivity.this, home.class));
 
       /*  Cursor cursor= db.syncDetails();
         if(cursor !=null && cursor.getCount()>0){
@@ -61,7 +64,6 @@ public class MainActivity extends AppCompatActivity {
 
         }else{
             Boolean checkUser=db.checkUser(name);
-
             if(checkUser==false){
                 Boolean checkMail=db.checkMail(name);
                 if(checkMail==true){
@@ -74,21 +76,79 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "wrong Password", Toast.LENGTH_SHORT).show();
                         password.setText("Enter a Valid Password");
                     }
-                }else {
-                    if(checkUser==true){
-                        Boolean checkPass=db.checkPassword(pass);
-                        if(checkPass==true){
-                            Toast.makeText(getApplicationContext(), "Login successful \n Welcome", Toast.LENGTH_SHORT).show();
-                            Intent intent=new Intent(getApplicationContext(), home.class);
-                            startActivity(intent);
-                        }
-                    }
-
                 }
+            }else {
+                if(checkUser==true){
+                    Boolean checkPass=db.checkPassword(pass);
+                    if(checkPass==true){
+                        Toast.makeText(getApplicationContext(), "Login successful \n Welcome", Toast.LENGTH_SHORT).show();
+                        Intent intent=new Intent(getApplicationContext(), home.class);
+                        startActivity(intent);
+                    }
+                }
+
             }
         }
 
 
+
+    }
+
+    public void log(String email, String password){
+        String type="login";
+
+        //noinspection deprecation
+        new android.os.AsyncTask<Void, Void, String>(){
+            protected String doInBackground(Void[] params) {
+                String response="";
+                try {
+                    String strings[]=new String[3];
+                    strings[0]=type;
+                    strings[1]=email;
+                    strings[2]=password;
+                    HttpProcesses httpProcesses=new HttpProcesses();
+                    response = httpProcesses.sendRequest(strings);
+
+
+
+
+                } catch (Exception e) {
+                    response=e.getMessage();
+                }
+
+                return response;
+            }
+            protected void onPostExecute(String response) {
+
+                //do something with response
+                try {
+                    JSONObject jsonObject=new JSONObject(response);
+                    Boolean result=jsonObject.getBoolean("status");
+                    if(result==true){
+                        String message=jsonObject.getString("message");
+
+                        int mechanicStatus=jsonObject.getInt("");
+                        UserDetails.INSTANCE.setUserId(jsonObject.getInt("id"));
+                        UserDetails.INSTANCE.setMechanicStatus(jsonObject.getInt("mechanicStatus"));
+                        UserDetails.INSTANCE.setPhone(jsonObject.getString("Phone"));
+                        UserDetails.INSTANCE.setName(jsonObject.getString("Name"));
+                        Intent intent=new Intent(getApplicationContext(), home.class);
+
+                        startActivity(intent);
+
+                        Toast.makeText(getApplicationContext(), message+"\n \tWelcome", Toast.LENGTH_LONG).show();
+                    }
+                    else{
+                        error.setText("Invalid UserName Or Password");
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+            }
+
+        }.execute();
 
     }
 
